@@ -7,6 +7,69 @@
     font-family: Spartan-Bold;
     src: url(..//fonts/Spartan-Bold.ttf);
 }
+// Default Theme
+html{
+    // Backgrounds   
+    --main-background: hsl(222, 26%, 31%);
+    --toggler-background: hsl(6, 63%, 50%);
+    --toggler-track-background: hsl(223, 31%, 20%);
+    --keypad-background: hsl(223, 31%, 20%);
+    --screen-background: hsl(224, 36%, 15%);
+    --primary-key-background: hsl(30, 25%, 89%);
+    --secondary-key-background: hsl(225, 21%, 49%);
+    --tertiary-key-background: hsl(6, 63%, 50%);
+    // Shadows
+    --primary-key-shadow: hsl(28, 16%, 65%);
+    --secondary-key-shadow: hsl(224, 28%, 35%);
+    --tertiary-key-shadow: hsl(6, 70%, 34%);
+    // Text
+    --screen-text: hsl(0, 0%, 100%);
+    --primary-text: hsl(221, 14%, 31%);
+    --secondary-text: hsl(0, 0%, 100%);
+    --tertiary-text: hsl(0, 0%, 100%);
+}
+    // White Theme
+html[data-theme='white']{
+    // Backgrounds   
+    --main-background: hsl(0, 0%, 90%);
+    --toggler-background: hsl(25, 98%, 40%);
+    --toggler-track-background: hsl(0, 5%, 81%);
+    --keypad-background: hsl(0, 5%, 81%);
+    --screen-background: hsl(0, 0%, 93%);
+    --primary-key-background: hsl(45, 7%, 89%);
+    --secondary-key-background: hsl(185, 42%, 37%);
+    --tertiary-key-background: hsl(25, 98%, 40%);
+    // Shadows
+    --primary-key-shadow: hsl(35, 11%, 61%);
+    --secondary-key-shadow: hsl(185, 58%, 25%);
+    --tertiary-key-shadow: hsl(25, 99%, 27%);
+    // Text
+    --screen-text: hsl(60, 9%, 19%);
+    --primary-text: hsl(60, 9%, 19%);
+    --secondary-text: hsl(0, 0%, 100%);
+    --tertiary-text: hsl(0, 0%, 100%);
+}
+    // Purple Theme
+html[data-theme='purple']{
+    // Backgrounds   
+    --main-background: hsl(268, 75%, 9%);
+    --toggler-background: hsl(176, 100%, 44%);
+    --toggler-track-background: hsl(268, 71%, 12%);
+    --keypad-background: hsl(268, 71%, 12%);
+    --screen-background: hsl(268, 71%, 12%);
+    --primary-key-background: hsl(268, 47%, 21%);
+    --secondary-key-background: hsl(281, 89%, 26%);
+    --tertiary-key-background: hsl(176, 100%, 44%);
+    // Shadows
+    --primary-key-shadow: hsl(290, 70%, 36%);
+    --secondary-key-shadow: hsl(285, 91%, 52%);
+    --tertiary-key-shadow: hsl(177, 92%, 70%);
+    // Text
+    --screen-text: hsl(52, 100%, 62%);
+    --primary-text: hsl(52, 100%, 62%);
+    --secondary-text: hsl(0, 0%, 100%);
+    --tertiary-text: hsl(198, 19%, 13%);
+}
 body{
     width: 100vw;
     height: 100vh;
@@ -14,30 +77,68 @@ body{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: hsl(222, 26%, 31%);
+    background-color: var(--main-background);
     .calc{
         width: 30%;
         .calc-top{
             display: flex;
+            align-items: center;
+            font-family: Spartan-Bold;
+            color: var(--screen-text);
+            .brand{
+                font-size: 1.7rem;
+            }
             .calc-theme-selector{
+                margin-left: auto;
                 display: flex;
+                align-items: center;
+                font-size: 0.7rem;
+                .calc-theme-label{
+                    padding-top: 0.3rem;
+                    letter-spacing: 0.1rem;
+                }
                 .theme-track{
-                    width: 3.7rem;
+                    width: 4.1rem;
                     height: 1.5rem;
-                    padding: 0.3rem;
+                    padding: 0.25rem;
                     margin-left: 1rem;
+                    position: relative;
                     border-radius: 0.9rem;
                     display: inline-block;
-                    background-color: hsl(223, 31%, 20%);
-                    &:hover{
-                        cursor: pointer;
-                    }
+                    background-color: var(--toggler-track-background);
                     .selector-ball{
-                        width: 0.9rem;
-                        height: 0.9rem;
+                        width: 1rem;
+                        height: 1rem;
+                        position: absolute;
                         border-radius: 100%;
-                        background-color: hsl(6, 63%, 50%);
+                        background-color: var(--toggler-background);
                         transition: all ease-in-out 0.5s;
+                    }
+                    .hidden-inputs-wrapper{
+                        width: 100%;
+                        position: absolute;
+                        bottom: 0.3rem;
+                        display: flex;
+                        .hidden-inputs{
+                            display: flex;
+                            flex-direction: column;
+                            align-items: center;
+                            input[type=radio]{
+                                width: 1rem;
+                                height: 1rem;
+                                opacity: 0;
+                            }
+                            input[type=radio]:hover{
+                                cursor: pointer;
+                            }
+                            label{
+                                margin-bottom: 0.5rem;
+                                font-size: 0.7rem;
+                            }
+                        }
+                        .middle-input{
+                            margin: 0 0.3rem;
+                        }
                     }
                 }
             }
@@ -48,12 +149,12 @@ body{
             margin-top: 1.3rem;
             border-radius: 0.7rem;
             text-align: right;
-            background-color: hsl(224, 36%, 15%);
+            background-color: var(--screen-background);
             .calc-screen-text{
                 font-size: 2.1rem;
                 font-weight: 700;
                 font-family: Spartan-Bold;
-                color: hsl(0, 0, 100%);
+                color: var(--screen-text);
             }
         }
         .calc-keypad{
@@ -65,38 +166,40 @@ body{
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(5, 1fr);
             border-radius: 0.7rem;
-            background-color: hsl(223, 31%, 20%);
+            background-color: var(--keypad-background);
             .calc-keypad-button{
                 padding: 1.3rem 0rem;
                 border-radius: 0.3rem;
                 font-size: 1.7rem;
                 font-weight: 700;
                 font-family: Spartan-Bold;
-                color:hsl(221, 14%, 31%);
                 text-align: center;
-                background-color: hsl(30, 25%, 89%);
-                -webkit-box-shadow:0px 4px 0px 0px hsl(28, 16%, 65%);
-                -moz-box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
-                box-shadow: 0px 4px 0px 0px hsl(28, 16%, 65%);
                 transition: all ease-in-out 0.3s;
                 &:hover{
                   box-shadow: none;  
                   transform: translateY(4px);
                 }
             }
-            .btn-blue{
-                color:hsl(0, 0, 100%);
-                background-color: hsl(225, 21%, 49%);
-                -webkit-box-shadow:0px 4px 0px 0px hsl(224, 28%, 35%);
-                -moz-box-shadow: 0px 4px 0px 0px hsl(224, 28%, 35%);
-                box-shadow: 0px 4px 0px 0px hsl(224, 28%, 35%);
+            .btn-primary{
+                color: var(--primary-text);
+                background-color: var(--primary-key-background);
+                -webkit-box-shadow:0px 4px 0px 0px var(--primary-key-shadow);
+                -moz-box-shadow: 0px 4px 0px 0px var(--primary-key-shadow);
+                box-shadow: 0px 4px 0px 0px var(--primary-key-shadow);
             }
-            .btn-red{
-                color:hsl(0, 0, 100%);
-                background-color: hsl(6, 63%, 50%);
-                -webkit-box-shadow:0px 4px 0px 0px hsl(6, 70%, 34%);
-                -moz-box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
-                box-shadow: 0px 4px 0px 0px hsl(6, 70%, 34%);
+            .btn-secondary{
+                color: var(--secondary-text);
+                background-color: var(--secondary-key-background);
+                -webkit-box-shadow:0px 4px 0px 0px var(--secondary-key-shadow);
+                -moz-box-shadow: 0px 4px 0px 0px var(--secondary-key-shadow);
+                box-shadow: 0px 4px 0px 0px var(--secondary-key-shadow);
+            }
+            .btn-tertiary{
+                color: var(--tertiary-text);
+                background-color: var(--tertiary-key-background);
+                -webkit-box-shadow:0px 4px 0px 0px var(--tertiary-key-shadow);
+                -moz-box-shadow: 0px 4px 0px 0px var(--tertiary-key-shadow);
+                box-shadow: 0px 4px 0px 0px var(--tertiary-key-shadow);
             }
             .btn-reset{
                 grid-column-start: 1;
@@ -109,4 +212,11 @@ body{
         }
     }
 
+}
+html.theme-transition,
+html.theme-transition *,
+html.theme-transition *:before,
+html.theme-transition *:after {
+    transition: all 1000ms !important;
+    transition-delay: 0 !important;
 }

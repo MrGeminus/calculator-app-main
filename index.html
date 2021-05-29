@@ -1,36 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="default">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
-
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <link rel="stylesheet" href="css/style.css">
   <title>Frontend Mentor | Calculator app</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-    }
-
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
 </head>
 
 <body>
   <div class="calc">
     <div class="calc-top">
-      <p>calc</p>
+      <p class="brand">calc</p>
       <div class="calc-theme-selector">
-        <p>THEME</p>
+        <p class="calc-theme-label">THEME</p>
         <div class="theme-track">
           <div class="selector-ball"></div>
+          <div class="hidden-inputs-wrapper">
+            <div class="hidden-inputs">
+              <label for="default">1</label>
+              <input id="default" type="radio" name="themes">
+            </div>
+            <div class="hidden-inputs middle-input">
+              <label for="white">2</label>
+              <input id="white" type="radio" name="themes">
+            </div>
+            <div class="hidden-inputs">
+              <label for="purple">3</label>
+              <input id="purple" type="radio" name="themes">
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -38,58 +38,58 @@
       <p class="calc-screen-text">0</p>
     </div>
     <div class="calc-keypad">
-      <div class="calc-keypad-button">
-        <p class="">7</p>
+      <div class="calc-keypad-button btn-primary">
+        <p class="btn-primary-content">7</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">8</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">9</p>
       </div>
-      <div class="calc-keypad-button btn-blue">
+      <div class="calc-keypad-button btn-secondary">
         <p class="">DEL</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">4</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">5</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">6</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">+</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">1</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">2</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">3</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">-</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">.</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">0</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">/</p>
       </div>
-      <div class="calc-keypad-button">
+      <div class="calc-keypad-button btn-primary">
         <p class="">x</p>
       </div>
-      <div class="calc-keypad-button btn-blue btn-reset">
-        <p class="">RESET</p>
+      <div class="calc-keypad-button btn-secondary btn-reset">
+        <p class="btn-secondary-content">RESET</p>
       </div>
-      <div class="calc-keypad-button btn-red btn-equal">
+      <div class="calc-keypad-button btn-tertiary btn-equal">
         <p class="">=</p>
       </div>
     </div>
@@ -98,7 +98,7 @@
 
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="https://github.com/MrGeminus/calculator-app-main" target="_blank">Uros Tomic</a>.
   </div>
   <script src="js/script.js"></script>
 </body>
