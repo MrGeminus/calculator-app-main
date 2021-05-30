@@ -27,14 +27,16 @@ Users should be able to:
 - Adjust the color theme based on their preference
 - **Bonus**: Have their initial theme preference checked using `prefers-color-scheme` and have any additional changes saved in the browser
 
-### Screenshot
+### Screenshots
 
-![](./screenshot.jpg)
+![](images/Default_Theme_Calculator_App.png)
+![](images/White_Theme_Calculator_App.png)
+![](images/Purple_Theme_Calculator_App.png)
 
 ### Links
 
 - Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [https://mrgeminus.github.io/calculator-app-main/](https://your-live-site-url.com)
+- Live Site URL: [https://mrgeminus.github.io/calculator-app-main/](https://mrgeminus.github.io/calculator-app-main/)
 
 ## My process
 
@@ -79,9 +81,9 @@ Use this section to outline areas that you want to continue focusing on in futur
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [www.mrgeminus.com](https://mrgeminus.com/)
+- Frontend Mentor - [@MrGeminus](https://www.frontendmentor.io/profile/MrGeminus)
+- Twitter - [@MrGeminus](https://twitter.com/MrGeminus)
 
 ## Acknowledgments
 
