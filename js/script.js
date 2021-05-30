@@ -16,6 +16,7 @@ let additionChosen = false;
 let subtractionChosen = false;
 let multiplicationChosen = false;
 let divisionChosen = false;
+let calculationDone = false;
 keypadButtons.forEach(keypadButton => {
     function buttonPressed() {
         let screenText = document.querySelector(".calc-screen-text");
@@ -92,18 +93,26 @@ keypadButtons.forEach(keypadButton => {
             if (additionChosen == true) {
                 result = Number(fistValue) + Number(secondValue);
                 screenText.textContent = result;
+                mathOperatinActive = false;
+                additionChosen = false;
             }
             else if (subtractionChosen == true) {
                 result = Number(fistValue) - Number(secondValue);
                 screenText.textContent = result;
+                mathOperatinActive = false;
+                subtractionChosen = false;
             }
             else if (multiplicationChosen == true) {
                 result = Number(fistValue) * Number(secondValue);
                 screenText.textContent = result;
+                mathOperatinActive = false;
+                multiplicationChosen = false;
             }
             else if (divisionChosen == true) {
                 result = Number(fistValue) / Number(secondValue);
                 screenText.textContent = result;
+                mathOperatinActive = false;
+                divisionChosen = false;
             }
         }
     }
