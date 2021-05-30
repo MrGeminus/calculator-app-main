@@ -1,18 +1,110 @@
 let keypadButtons = document.querySelectorAll(".calc-keypad-button");
 let themes = document.querySelectorAll('input[name="themes"]');
-let isNum = /[0 - 9]/;
-let isReset = 'RESET';
-let isDelete = 'DEL'
+let isPlus = /[+]/;
+let isMinus = /[-]/;
+let isTimes = /[x]/;
+let isSlash = /[/]/;
+let isDot = /[.]/;
+let isEqual = /[=]/;
+let isReset = /RESET/;
+let isDelete = /DEL/
+let fistValue = "";
+let secondValue = "";
+let result = "";
+let mathOperatinActive = false;
+let additionChosen = false;
+let subtractionChosen = false;
+let multiplicationChosen = false;
+let divisionChosen = false;
 keypadButtons.forEach(keypadButton => {
     function buttonPressed() {
         let screenText = document.querySelector(".calc-screen-text");
         let key = keypadButton.textContent;
-        if (isNum.test(key) && Number(screenText.textContent) === 0) {
-            screenText.textContent = key.trim();
+        if (!isReset.test(key) && !isDelete.test(key) && !isPlus.test(key) && !isMinus.test(key) && !isTimes.test(key) && !isSlash.test(key) && !isEqual.test(key) && screenText.textContent == 0) {
+            if (mathOperatinActive == false) {
+                fistValue = key.trim();
+                screenText.textContent = fistValue;
+            }
+            else {
+                secondValue = key.trim();
+                screenText.textContent = secondValue;
+            }
         }
-        else if (isNum.test(key) && Number(screenText.textContent) !== 0) {
-            let newNum = screenText.textContent.trim() + key.trim();
-            screenText.textContent = addComma(newNum);
+        else if (!isReset.test(key) && !isDelete.test(key) && !isPlus.test(key) && !isMinus.test(key) && !isTimes.test(key) && !isSlash.test(key) && !isEqual.test(key) && screenText.textContent != 0) {
+            if (mathOperatinActive == false) {
+                fistValue = fistValue + key.trim();
+                screenText.textContent = fistValue;
+            }
+            else {
+                secondValue = secondValue + key.trim();
+                screenText.textContent = secondValue;
+            }
+        }
+        else if (isReset.test(key) && !isDelete.test(key)) {
+            screenText.textContent = 0;
+            mathOperatinActive = false;
+            additionChosen = false;
+            subtractionChosen = false;
+            multiplicationChosen = false;
+            divisionChosen = false;
+            fistValue = "";
+            secondValue = "";
+        }
+        else if (isDelete.test(key)) {
+            oldSreenValue = screenText.textContent.trim()
+            let screenTextArray = [];
+            for (let i = 0; i < oldSreenValue.length; i++) {
+                screenTextArray.push(oldSreenValue.substr(i, 1));
+            }
+            screenTextArray.pop();
+            let newSreenValue = "";
+            for (let i = 1; i <= screenTextArray.length; i++) {
+                newSreenValue += screenTextArray[i - 1];
+            }
+            if (newSreenValue.length != 0) {
+                screenText.textContent = newSreenValue;
+            }
+            else {
+                screenText.textContent = 0;
+            }
+        }
+        else if (isPlus.test(key) && mathOperatinActive == false) {
+            additionChosen = true;
+            screenText.textContent = 0;
+            mathOperatinActive = true;
+        }
+        else if (isMinus.test(key) && mathOperatinActive == false) {
+            subtractionChosen = true;
+            screenText.textContent = 0;
+            mathOperatinActive = true;
+        }
+        else if (isTimes.test(key) && mathOperatinActive == false) {
+            multiplicationChosen = true;
+            screenText.textContent = 0;
+            mathOperatinActive = true;
+        }
+        else if (isSlash.test(key) && mathOperatinActive == false) {
+            divisionChosen = true;
+            screenText.textContent = 0;
+            mathOperatinActive = true;
+        }
+        else if (isEqual.test(key)) {
+            if (additionChosen == true) {
+                result = Number(fistValue) + Number(secondValue);
+                screenText.textContent = result;
+            }
+            else if (subtractionChosen == true) {
+                result = Number(fistValue) - Number(secondValue);
+                screenText.textContent = result;
+            }
+            else if (multiplicationChosen == true) {
+                result = Number(fistValue) * Number(secondValue);
+                screenText.textContent = result;
+            }
+            else if (divisionChosen == true) {
+                result = Number(fistValue) / Number(secondValue);
+                screenText.textContent = result;
+            }
         }
     }
     keypadButton.addEventListener("click", buttonPressed);
@@ -56,11 +148,3 @@ let moveBall = (selectedTheme, currentTheme) => {
         ball.style.transform = "translateX(" + 2.6 + "rem)";
     }
 }
-let array = [1, 5, 5, 5];
-for (let i = 1; i < array.length; i += 3) {
-    if (array[i] != ",") {
-        array.push(",")
-        console.log(array)
-    }
-}
-[1, ",", 5, 5, 5]
