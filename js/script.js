@@ -140,20 +140,43 @@ let moveBall = (selectedTheme, currentTheme) => {
     let ball = document.querySelector(".selector-ball");
     if (selectedTheme == "default" && currentTheme == "white") {
         ball.style.transform = "translateX(" + 0 + "rem)";
+        localStorage.setItem("preferredTheme", `${selectedTheme}`);
     }
     else if (selectedTheme == "default" && currentTheme == "purple") {
         ball.style.transform = "translateX(" + 0 + "rem)";
+        localStorage.setItem("preferredTheme", `${selectedTheme}`);
     }
     else if (selectedTheme == "white" && currentTheme == "default") {
         ball.style.transform = "translateX(" + 1.3 + "rem)";
+        localStorage.setItem("preferredTheme", `${selectedTheme}`);
     }
     else if (selectedTheme == "white" && currentTheme == "purple") {
         ball.style.transform = "translateX(" + 1.3 + "rem)";
+        localStorage.setItem("preferredTheme", `${selectedTheme}`);
     }
     else if (selectedTheme == "purple" && currentTheme == "default") {
         ball.style.transform = "translateX(" + 2.6 + "rem)";
+        localStorage.setItem("preferredTheme", `${selectedTheme}`);
     }
     else if (selectedTheme == "purple" && currentTheme == "white") {
         ball.style.transform = "translateX(" + 2.6 + "rem)";
+        localStorage.setItem("preferredTheme", `${selectedTheme}`);
     }
 }
+function preferredTheme() {
+    let ball = document.querySelector(".selector-ball");
+    if (localStorage.getItem("preferredTheme") != undefined) {
+        document.documentElement.setAttribute('data-theme', `${localStorage.getItem("preferredTheme")}`);
+        if (localStorage.getItem("preferredTheme") == "white") {
+            ball.style.transform = "translateX(" + 1.3 + "rem)";
+        }
+        else if (localStorage.getItem("preferredTheme") == "purple") {
+            ball.style.transform = "translateX(" + 2.6 + "rem)";
+        }
+        else if (localStorage.getItem("preferredTheme") == "default") {
+            ball.style.transform = "translateX(" + 0 + "rem)";
+
+        }
+    }
+}
+preferredTheme();
