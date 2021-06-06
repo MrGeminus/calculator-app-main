@@ -250,3 +250,4 @@ function preferredTheme() {
     }
 }
 preferredTheme();
+console.log(screen.height)
