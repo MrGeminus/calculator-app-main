@@ -17,12 +17,14 @@ let subtractionChosen = false;
 let multiplicationChosen = false;
 let divisionChosen = false;
 let calculationDone = false;
+let firstIsDecimalNum = false;
+let secondIsDecimalNum = false;
 keypadButtons.forEach(keypadButton => {
     function buttonPressed() {
         let screenText = document.querySelector(".calc-screen-text");
         let key = keypadButton.textContent;
-        if (!isReset.test(key) && !isDelete.test(key) && !isPlus.test(key) && !isMinus.test(key) && !isTimes.test(key) && !isSlash.test(key) && !isEqual.test(key) && screenText.textContent == 0) {
-            if (mathOperatinActive == false) {
+        if (!isReset.test(key) && !isDelete.test(key) && !isDot.test(key) && !isPlus.test(key) && !isMinus.test(key) && !isTimes.test(key) && !isSlash.test(key) && !isEqual.test(key) && /^[0]/.test(screenText.textContent) && !/^[0][.]/.test(screenText.textContent)) {
+            if (mathOperatinActive == false && calculationDone == false) {
                 fistValue = key.trim();
                 screenText.textContent = fistValue;
             }
@@ -31,8 +33,8 @@ keypadButtons.forEach(keypadButton => {
                 screenText.textContent = secondValue;
             }
         }
-        else if (!isReset.test(key) && !isDelete.test(key) && !isPlus.test(key) && !isMinus.test(key) && !isTimes.test(key) && !isSlash.test(key) && !isEqual.test(key) && screenText.textContent != 0) {
-            if (mathOperatinActive == false) {
+        else if (!isReset.test(key) && !isDelete.test(key) && !isDot.test(key) && !isPlus.test(key) && !isMinus.test(key) && !isTimes.test(key) && !isSlash.test(key) && !isEqual.test(key) && (!/^[0][0-9]/.test(screenText.textContent) || /^[0][.]/.test(screenText.textContent))) {
+            if (mathOperatinActive == false && calculationDone == false) {
                 fistValue = fistValue + key.trim();
                 screenText.textContent = fistValue;
             }
@@ -48,8 +50,23 @@ keypadButtons.forEach(keypadButton => {
             subtractionChosen = false;
             multiplicationChosen = false;
             divisionChosen = false;
+            firstIsDecimalNum = false;
+            secondIsDecimalNum = false;
+            calculationDone = false;
             fistValue = "";
             secondValue = "";
+        }
+        else if (isDot.test(key) && calculationDone == false) {
+            if (firstIsDecimalNum == false) {
+                fistValue = fistValue + key.trim();
+                screenText.textContent = fistValue;
+                firstIsDecimalNum = true;
+            }
+            else if (secondIsDecimalNum == false) {
+                secondValue = secondValue + key.trim();
+                screenText.textContent = secondValue;
+                secondIsDecimalNum = true;
+            }
         }
         else if (isDelete.test(key)) {
             oldSreenValue = screenText.textContent.trim()
@@ -93,26 +110,38 @@ keypadButtons.forEach(keypadButton => {
             if (additionChosen == true) {
                 result = Number(fistValue) + Number(secondValue);
                 screenText.textContent = result;
+                fistValue = result;
+                secondValue = ""
                 mathOperatinActive = false;
                 additionChosen = false;
+                calculationDone = true;
             }
             else if (subtractionChosen == true) {
                 result = Number(fistValue) - Number(secondValue);
                 screenText.textContent = result;
+                fistValue = result;
+                secondValue = ""
                 mathOperatinActive = false;
                 subtractionChosen = false;
+                calculationDone = true;
             }
             else if (multiplicationChosen == true) {
                 result = Number(fistValue) * Number(secondValue);
                 screenText.textContent = result;
+                fistValue = result;
+                secondValue = ""
                 mathOperatinActive = false;
                 multiplicationChosen = false;
+                calculationDone = true;
             }
             else if (divisionChosen == true) {
                 result = Number(fistValue) / Number(secondValue);
                 screenText.textContent = result;
+                fistValue = result;
+                secondValue = ""
                 mathOperatinActive = false;
                 divisionChosen = false;
+                calculationDone = true;
             }
         }
     }
@@ -138,34 +167,62 @@ let trans = () => {
 }
 let moveBall = (selectedTheme, currentTheme) => {
     let ball = document.querySelector(".selector-ball");
-    if (selectedTheme == "default" && currentTheme == "white") {
-        ball.style.transform = "translateX(" + 0 + "rem)";
-        localStorage.setItem("preferredTheme", `${selectedTheme}`);
+    if (screen.width > 550) {
+        if (selectedTheme == "default" && currentTheme == "white") {
+            ball.style.transform = "translateX(" + 0 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
+        else if (selectedTheme == "default" && currentTheme == "purple") {
+            ball.style.transform = "translateX(" + 0 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
+        else if (selectedTheme == "white" && currentTheme == "default") {
+            ball.style.transform = "translateX(" + 1.3 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
+        else if (selectedTheme == "white" && currentTheme == "purple") {
+            ball.style.transform = "translateX(" + 1.3 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
+        else if (selectedTheme == "purple" && currentTheme == "default") {
+            ball.style.transform = "translateX(" + 2.6 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
+        else if (selectedTheme == "purple" && currentTheme == "white") {
+            ball.style.transform = "translateX(" + 2.6 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
     }
-    else if (selectedTheme == "default" && currentTheme == "purple") {
-        ball.style.transform = "translateX(" + 0 + "rem)";
-        localStorage.setItem("preferredTheme", `${selectedTheme}`);
-    }
-    else if (selectedTheme == "white" && currentTheme == "default") {
-        ball.style.transform = "translateX(" + 1.3 + "rem)";
-        localStorage.setItem("preferredTheme", `${selectedTheme}`);
-    }
-    else if (selectedTheme == "white" && currentTheme == "purple") {
-        ball.style.transform = "translateX(" + 1.3 + "rem)";
-        localStorage.setItem("preferredTheme", `${selectedTheme}`);
-    }
-    else if (selectedTheme == "purple" && currentTheme == "default") {
-        ball.style.transform = "translateX(" + 2.6 + "rem)";
-        localStorage.setItem("preferredTheme", `${selectedTheme}`);
-    }
-    else if (selectedTheme == "purple" && currentTheme == "white") {
-        ball.style.transform = "translateX(" + 2.6 + "rem)";
-        localStorage.setItem("preferredTheme", `${selectedTheme}`);
+    else {
+        if (selectedTheme == "default" && currentTheme == "white") {
+            ball.style.transform = "translateX(" + 0.04 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
+        else if (selectedTheme == "default" && currentTheme == "purple") {
+            ball.style.transform = "translateX(" + 0.04 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
+        else if (selectedTheme == "white" && currentTheme == "default") {
+            ball.style.transform = "translateX(" + 1.42 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
+        else if (selectedTheme == "white" && currentTheme == "purple") {
+            ball.style.transform = "translateX(" + 1.42 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
+        else if (selectedTheme == "purple" && currentTheme == "default") {
+            ball.style.transform = "translateX(" + 2.9 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
+        else if (selectedTheme == "purple" && currentTheme == "white") {
+            ball.style.transform = "translateX(" + 2.9 + "rem)";
+            localStorage.setItem("preferredTheme", `${selectedTheme}`);
+        }
     }
 }
 function preferredTheme() {
     let ball = document.querySelector(".selector-ball");
-    if (localStorage.getItem("preferredTheme") != undefined) {
+    if (localStorage.getItem("preferredTheme") != undefined && screen.width > 550) {
         document.documentElement.setAttribute('data-theme', `${localStorage.getItem("preferredTheme")}`);
         if (localStorage.getItem("preferredTheme") == "white") {
             ball.style.transform = "translateX(" + 1.3 + "rem)";
@@ -175,6 +232,19 @@ function preferredTheme() {
         }
         else if (localStorage.getItem("preferredTheme") == "default") {
             ball.style.transform = "translateX(" + 0 + "rem)";
+
+        }
+    }
+    if (localStorage.getItem("preferredTheme") != undefined && screen.width <= 550) {
+        document.documentElement.setAttribute('data-theme', `${localStorage.getItem("preferredTheme")}`);
+        if (localStorage.getItem("preferredTheme") == "white") {
+            ball.style.transform = "translateX(" + 1.42 + "rem)";
+        }
+        else if (localStorage.getItem("preferredTheme") == "purple") {
+            ball.style.transform = "translateX(" + 2.9 + "rem)";
+        }
+        else if (localStorage.getItem("preferredTheme") == "default") {
+            ball.style.transform = "translateX(" + 0.04 + "rem)";
 
         }
     }
