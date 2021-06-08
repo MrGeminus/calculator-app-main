@@ -26,21 +26,21 @@ keypadButtons.forEach(keypadButton => {
         if (!isReset.test(key) && !isDelete.test(key) && !isDot.test(key) && !isPlus.test(key) && !isMinus.test(key) && !isTimes.test(key) && !isSlash.test(key) && !isEqual.test(key) && /^[0]/.test(screenText.textContent) && !/^[0][.]/.test(screenText.textContent)) {
             if (mathOperatinActive == false && calculationDone == false) {
                 fistValue = key.trim();
-                screenText.textContent = fistValue;
+                screenText.textContent = fistValue.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
             }
             else {
                 secondValue = key.trim();
-                screenText.textContent = secondValue;
+                screenText.textContent = secondValue.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
             }
         }
         else if (!isReset.test(key) && !isDelete.test(key) && !isDot.test(key) && !isPlus.test(key) && !isMinus.test(key) && !isTimes.test(key) && !isSlash.test(key) && !isEqual.test(key) && (!/^[0][0-9]/.test(screenText.textContent) || /^[0][.]/.test(screenText.textContent))) {
             if (mathOperatinActive == false && calculationDone == false) {
                 fistValue = fistValue + key.trim();
-                screenText.textContent = fistValue;
+                screenText.textContent = fistValue.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
             }
             else {
                 secondValue = secondValue + key.trim();
-                screenText.textContent = secondValue;
+                screenText.textContent = secondValue.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
             }
         }
         else if (isReset.test(key) && !isDelete.test(key)) {
@@ -77,13 +77,27 @@ keypadButtons.forEach(keypadButton => {
             screenTextArray.pop();
             let newSreenValue = "";
             for (let i = 1; i <= screenTextArray.length; i++) {
-                newSreenValue += screenTextArray[i - 1];
+                if (screenTextArray[i - 1] != ',') {
+                    newSreenValue += screenTextArray[i - 1];
+                }
             }
             if (newSreenValue.length != 0) {
-                screenText.textContent = newSreenValue;
+                screenText.textContent = newSreenValue.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
+                if (mathOperatinActive == false && calculationDone == false) {
+                    fistValue = newSreenValue;
+                }
+                else {
+                    secondValue = newSreenValue;
+                }
             }
             else {
                 screenText.textContent = 0;
+                if (mathOperatinActive == false && calculationDone == false) {
+                    fistValue = '';
+                }
+                else {
+                    secondValue = '';
+                }
             }
         }
         else if (isPlus.test(key) && mathOperatinActive == false) {
@@ -109,7 +123,7 @@ keypadButtons.forEach(keypadButton => {
         else if (isEqual.test(key)) {
             if (additionChosen == true) {
                 result = Number(fistValue) + Number(secondValue);
-                screenText.textContent = result;
+                screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                 fistValue = result;
                 secondValue = ""
                 mathOperatinActive = false;
@@ -118,7 +132,7 @@ keypadButtons.forEach(keypadButton => {
             }
             else if (subtractionChosen == true) {
                 result = Number(fistValue) - Number(secondValue);
-                screenText.textContent = result;
+                screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                 fistValue = result;
                 secondValue = ""
                 mathOperatinActive = false;
@@ -127,7 +141,7 @@ keypadButtons.forEach(keypadButton => {
             }
             else if (multiplicationChosen == true) {
                 result = Number(fistValue) * Number(secondValue);
-                screenText.textContent = result;
+                screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                 fistValue = result;
                 secondValue = ""
                 mathOperatinActive = false;
@@ -136,7 +150,7 @@ keypadButtons.forEach(keypadButton => {
             }
             else if (divisionChosen == true) {
                 result = Number(fistValue) / Number(secondValue);
-                screenText.textContent = result;
+                screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                 fistValue = result;
                 secondValue = ""
                 mathOperatinActive = false;
@@ -250,4 +264,4 @@ function preferredTheme() {
     }
 }
 preferredTheme();
-console.log(screen.height)
+
