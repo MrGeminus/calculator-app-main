@@ -8,8 +8,8 @@ let isDot = /[.]/;
 let isEqual = /[=]/;
 let isReset = /RESET/;
 let isDelete = /DEL/
-let fistValue = "";
-let secondValue = "";
+let fistValue = "0";
+let secondValue = "0";
 let result = "";
 let mathOperatinActive = false;
 let additionChosen = false;
@@ -53,8 +53,8 @@ keypadButtons.forEach(keypadButton => {
             firstIsDecimalNum = false;
             secondIsDecimalNum = false;
             calculationDone = false;
-            fistValue = "";
-            secondValue = "";
+            fistValue = "0";
+            secondValue = "0";
         }
         else if (isDot.test(key) && calculationDone == false) {
             if (firstIsDecimalNum == false) {
@@ -62,7 +62,7 @@ keypadButtons.forEach(keypadButton => {
                 screenText.textContent = fistValue;
                 firstIsDecimalNum = true;
             }
-            else if (secondIsDecimalNum == false) {
+            else if (secondIsDecimalNum == false && mathOperatinActive == true) {
                 secondValue = secondValue + key.trim();
                 screenText.textContent = secondValue;
                 secondIsDecimalNum = true;
@@ -75,6 +75,9 @@ keypadButtons.forEach(keypadButton => {
                 screenTextArray.push(oldSreenValue.substr(i, 1));
             }
             screenTextArray.pop();
+            if (screenTextArray[screenTextArray.length - 1] == ".") {
+                screenTextArray.pop();
+            }
             let newSreenValue = "";
             for (let i = 1; i <= screenTextArray.length; i++) {
                 if (screenTextArray[i - 1] != ',') {
@@ -93,10 +96,10 @@ keypadButtons.forEach(keypadButton => {
             else {
                 screenText.textContent = 0;
                 if (mathOperatinActive == false && calculationDone == false) {
-                    fistValue = '';
+                    fistValue = "0";
                 }
                 else {
-                    secondValue = '';
+                    secondValue = "0";
                 }
             }
         }
@@ -125,7 +128,7 @@ keypadButtons.forEach(keypadButton => {
                 result = Number(fistValue) + Number(secondValue);
                 screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                 fistValue = result;
-                secondValue = ""
+                secondValue = "0"
                 mathOperatinActive = false;
                 additionChosen = false;
                 calculationDone = true;
@@ -134,7 +137,7 @@ keypadButtons.forEach(keypadButton => {
                 result = Number(fistValue) - Number(secondValue);
                 screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                 fistValue = result;
-                secondValue = ""
+                secondValue = "0"
                 mathOperatinActive = false;
                 subtractionChosen = false;
                 calculationDone = true;
@@ -143,7 +146,7 @@ keypadButtons.forEach(keypadButton => {
                 result = Number(fistValue) * Number(secondValue);
                 screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                 fistValue = result;
-                secondValue = ""
+                secondValue = "0"
                 mathOperatinActive = false;
                 multiplicationChosen = false;
                 calculationDone = true;
@@ -152,7 +155,7 @@ keypadButtons.forEach(keypadButton => {
                 result = Number(fistValue) / Number(secondValue);
                 screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
                 fistValue = result;
-                secondValue = ""
+                secondValue = "0"
                 mathOperatinActive = false;
                 divisionChosen = false;
                 calculationDone = true;

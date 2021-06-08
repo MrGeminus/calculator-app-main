@@ -57,8 +57,10 @@ I'd definitely like to get better at JavaScript and maybe also learn Vue.js.
 
 ### Useful resources
 
-- [RegExp - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
+- [RegExp - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) - This sourse helped me .
 - [RegExp - W3Schools](https://www.w3schools.com/jsref/jsref_obj_regexp.asp) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+- [Thousands Digit Separators](https://thewebdev.info/2021/02/12/how-to-format-a-number-with-commas-as-thousands-digit-separators-in-javascript/) - This is an amazing article which helped me finally und
+- [Stackoverflow](https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript) - This is an amazing article which helped me finally und
 - [Custom Toggler](https://www.youtube.com/watch?v=ZKXv_ZHQ654&list=LL&index=81) - This helped me with the toggler design. Gary is an amazing UX/UI Designer.
 I'd definitely recommend to anyone to check his channel.
 
