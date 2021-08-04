@@ -10,100 +10,106 @@
 </head>
 
 <body>
-  <section>
-    <div class="calc">
-      <div class="calc-top">
-        <p class="brand">calc</p>
-        <div class="calc-theme-selector">
-          <p class="calc-theme-label">THEME</p>
-          <div class="theme-track">
-            <div class="selector-ball"></div>
-            <div class="hidden-inputs-wrapper">
-              <div class="hidden-inputs">
-                <label for="default">1</label>
-                <input id="default" type="radio" name="themes">
-              </div>
-              <div class="hidden-inputs middle-input">
-                <label for="white">2</label>
-                <input id="white" type="radio" name="themes">
-              </div>
-              <div class="hidden-inputs">
-                <label for="purple">3</label>
-                <input id="purple" type="radio" name="themes">
+  <div class="page">
+    <main class="page-main">
+      <article div class="calc">
+        <section class="calc-top">
+          <a class="brand" href="https://mrgeminus.github.io/calculator-app-main/" target="_self">calc</a>
+          <div class="calc-theme-selector">
+            <p class="calc-theme-label">THEME</p>
+            <div class="theme-track">
+              <div class="selector-ball"></div>
+              <div class="hidden-inputs-wrapper">
+                <div class="hidden-inputs">
+                  <label for="default">1</label>
+                  <input id="default" type="radio" name="themes">
+                </div>
+                <div class="hidden-inputs middle-input">
+                  <label for="white">2</label>
+                  <input id="white" type="radio" name="themes">
+                </div>
+                <div class="hidden-inputs">
+                  <label for="purple">3</label>
+                  <input id="purple" type="radio" name="themes">
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="calc-screen">
-        <p class="calc-screen-text">0</p>
-      </div>
-      <div class="calc-keypad">
-        <div class="calc-keypad-button btn-primary">
-          <p class="btn-primary-content">7</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">8</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">9</p>
-        </div>
-        <div class="calc-keypad-button btn-secondary">
-          <p class="">DEL</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">4</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">5</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">6</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">+</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">1</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">2</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">3</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">-</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">.</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">0</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">/</p>
-        </div>
-        <div class="calc-keypad-button btn-primary">
-          <p class="">x</p>
-        </div>
-        <div class="calc-keypad-button btn-secondary btn-reset">
-          <p class="btn-secondary-content">RESET</p>
-        </div>
-        <div class="calc-keypad-button btn-tertiary btn-equal">
-          <p class="">=</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer>
-    <p class="attribution">
-      Challenge by <a href="https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29" target="_blank">Frontend
-        Mentor</a>.
-      Coded by <a href="https://github.com/MrGeminus" target="_blank">Uros Tomic</a>.
-    </p>
-  </footer>
-  <script src="js/script.js"></script>
+        </section>
+        <section class="calc-screen">
+          <p class="calc-screen-text calc-screen__displayed-value calc-screen__displayed-value--color">0</p>
+        </section>
+        <section class="calc-keypad">
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            7
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            8
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            9
+          </button>
+          <button class="calc-keypad-button btn-secondary calc-keypad-button--secondary-color">
+            DEL
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            4
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            5
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            6
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            +
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            1
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            2
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            3
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            -
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            .
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            0
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            /
+          </button>
+          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+            x
+          </button>
+          <button
+            class="calc-keypad-button calc-keypad-button--large calc-keypad-button--secondary-color btn-secondary btn-reset">
+            RESET
+          </button>
+          <button
+            class="calc-keypad-button calc-keypad-button--large calc-keypad-button--tertiary-color btn-tertiary btn-equal">
+            =
+          </button>
+        </section>
+      </article>
+    </main>
+    <footer class="page-footer">
+      <p class="page-footer__text">
+        Challenge by <a class="page-footer__link page-footer__link--decoration"
+          href="https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29" target="_blank">Frontend
+          Mentor</a>.
+        Coded by <a class="page-footer__link page-footer__link--decoration"
+          href="https://www.frontendmentor.io/profile/MrGeminus" target="_blank">Uros Tomic</a>.
+      </p>
+    </footer>
+  </div>
+  <script src="script.js"></script>
 </body>
 
 </html>
