@@ -35,7 +35,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/localstorage-regex-sass-X4ekBCyU4](https://www.frontendmentor.io/solutions/localstorage-regex-sass-X4ekBCyU4)
 - Live Site URL: [https://mrgeminus.github.io/calculator-app-main/](https://mrgeminus.github.io/calculator-app-main/)
 
 ## My process
@@ -43,9 +43,12 @@ Users should be able to:
 ### Built with
 
 - Semantic HTML5 markup
-- SASS
+- CSS pre-processor (SASS)
+- Mobile-first workflow
+- BEM naming convention
 - Flexbox
-- JavaSript
+- Regular expression
+- TypeScript
 
 ### What I learned
 
@@ -66,7 +69,10 @@ I'd definitely recommend to anyone to check his channel.
 
 ## Author
 
-- Website - [www.mrgeminus.com](https://mrgeminus.com/)
+- Website - [Uros Tomic](https://mrgeminus.com/)
 - Frontend Mentor - [@MrGeminus](https://www.frontendmentor.io/profile/MrGeminus)
+- LinkedIn - [Uros Tomic](https://www.linkedin.com/in/mrgeminus/)
+- Xing - [Uros Tomic](https://www.xing.com/profile/Uros_Tomic3/cv)
+- StackOverflow - [MrGeminus](https://www.linkedin.com/in/mrgeminus/)
 - Twitter - [@MrGeminus](https://twitter.com/MrGeminus)
 

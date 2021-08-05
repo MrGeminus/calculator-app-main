@@ -14,24 +14,25 @@
     <main class="page-main">
       <article div class="calc">
         <section class="calc-top">
-          <a class="brand" href="https://mrgeminus.github.io/calculator-app-main/" target="_self">calc</a>
-          <div class="calc-theme-selector">
-            <p class="calc-theme-label">THEME</p>
-            <div class="theme-track">
-              <div class="selector-ball"></div>
-              <div class="hidden-inputs-wrapper">
-                <div class="hidden-inputs">
-                  <label for="default">1</label>
-                  <input id="default" type="radio" name="themes">
-                </div>
-                <div class="hidden-inputs middle-input">
-                  <label for="white">2</label>
-                  <input id="white" type="radio" name="themes">
-                </div>
-                <div class="hidden-inputs">
-                  <label for="purple">3</label>
-                  <input id="purple" type="radio" name="themes">
-                </div>
+          <a class="calc-top__brand" href="https://mrgeminus.github.io/calculator-app-main/" target="_self">calc</a>
+          <div class="calc-top__theme-selector">
+            <p class="calc-top__theme-label">THEME</p>
+            <div class="calc-top__slider-track">
+              <div class="calc-top__slider"></div>
+              <div class="calc-top__theme">
+                <span class="calc-top__theme-number">1</span>
+                <label for="blue" class="screen-readers-only">Blue theme</label>
+                <input id="blue" class="" type="radio" name="themes">
+              </div>
+              <div class="calc-top__theme">
+                <span class="calc-top__theme-number">2</span>
+                <label for="gray" class="screen-readers-only">Gray theme</label>
+                <input id="gray" class="" type="radio" name="themes">
+              </div>
+              <div class="calc-top__theme">
+                <span class="calc-top__theme-number">3</span>
+                <label for="violet" class="screen-readers-only">Violet theme</label>
+                <input id="violet" class="" type="radio" name="themes">
               </div>
             </div>
           </div>
