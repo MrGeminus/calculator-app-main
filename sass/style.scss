@@ -123,7 +123,7 @@ html[data-theme='purple']{
 
     &-main {
         width: 100%;
-        padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+        padding: 1.5rem 1.5rem 1.5rem 1.5rem;
         display: flex;
         flex-grow: 1;
         background-color: var(--main-background);
@@ -142,145 +142,172 @@ html[data-theme='purple']{
 
         &-top__brand {
             color: var(--brand-color);
-            font-size: 1.9rem;
+            font-size: 1.95rem;
             font-family: Spartan-Bold;
             text-decoration: none;
         }
 
-        &-top__theme-selector {
+        &-top__theme-selector-wrapper {
             margin-left: auto;
             display: flex;
-
         }
 
-        .calc-theme-label{
-            padding-top: 0.3rem;
+        &-top__theme-label {
+            padding-bottom: 0.2rem;
+            margin-right: 1.3rem;
+            margin-top: auto;
             color: var(--brand-color);
-            font-size: 0.7rem;
+            font-size: 0.75rem;
+            font-weight: 100;
             font-family: Spartan-Bold;
             letter-spacing: 0.1rem;
         }
 
-                .theme-track{
-                    width: 4.1rem;
-                    height: 1.5rem;
-                    padding: 0.25rem;
-                    margin-left: 1rem;
-                    position: relative;
-                    border-radius: 0.9rem;
-                    display: inline-block;
-                    background-color: var(--toggler-track-background);
-
-        &-top__slider {
-                        width: 1rem;
-                        height: 1rem;
-                        position: absolute;
-                        border-radius: 100%;
-                        background-color: var(--toggler-background);
-                        transition: all ease-in-out 0.5s;
+        &-top__theme-selector {
+            display: flex;
+            flex-direction: column;
         }
 
-                    .hidden-inputs-wrapper{
-                        width: 100%;
-                        position: absolute;
-                        bottom: 0.3rem;
-                        display: flex;
-                        .hidden-inputs{
-                            display: flex;
-                            flex-direction: column;
-                            align-items: center;
-                            input[type=radio]{
-                                width: 1rem;
-                                height: 1rem;
-                                opacity: 0;
-                            }
-                            input[type=radio]:hover{
-                                cursor: pointer;
-                            }
-                            label{
-                                margin-bottom: 0.5rem;
-                                font-size: 0.7rem;
-                            }
-                        }
-                        .middle-input{
-                            margin: 0 0.3rem;
-                        }
-                    }
-                }
-        .calc-screen{
+        &-top__theme-numeration {
+            padding: 0.25rem 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        &-top__theme-number {
+            color: var(--brand-color);
+            font-size: 0.7rem;
+            font-weight: 100;
+            font-family: Spartan-Bold;
+            text-align: center;
+        }
+
+        &-top__slider-track {
+            width: 4.5rem;
+            height: 1.6rem;
+            padding: 0.1rem;
+            position: relative;
+            border-radius: 0.9rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            background-color: var(--toggler-track-background);
+        }
+
+        &-top__slider {
+            width: 1rem;
+            height: 1rem;
+            position: absolute;
+            top: 0.3rem;
+            left: 0.3rem;
+            border-radius: 100%;
+            background-color: var(--toggler-background);
+            transition: all ease-in-out 0.5s;
+        }
+
+        &-top__theme {
+            width: 1.4rem;
+            height: 1.4rem;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        &-screen {
             width: 100%;
-            padding: 1.5rem;
-            margin-top: 1.3rem;
+            padding: 1.6rem;
+            margin-top: 2rem;
             border-radius: 0.7rem;
             text-align: right;
             background-color: var(--screen-background);
-            .calc-screen-text{
-                font-size: 2.1rem;
-                font-weight: 700;
-                font-family: Spartan-Bold;
-                color: var(--screen-text);
-            }
+        }  
+
+        &-screen__displayed-value {
+            font-size: 2rem;
+            font-weight: 100;
+            font-family: Spartan-Bold;
+            color: var(--screen-text);
         }
-        .calc-keypad{
+
+        // Keypad styling
+
+        &-keypad {
             width: 100%;
             padding: 1.5rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
             display: grid;
-            grid-gap: 1rem;
+            grid-gap: 0.85rem;
             grid-template-columns: repeat(4, 1fr);
             grid-template-rows: repeat(5, 1fr);
             border-radius: 0.7rem;
             background-color: var(--keypad-background);
-            .calc-keypad-button{
-                padding: 1.1rem 0rem 0.7rem 0rem;
+        }
+
+        // General keypad button styling
+
+        &-keypad-button {
                 margin-bottom: 0.3rem;
                 border: none;
                 border-radius: 0.3rem;
-                font-size: 1.7rem;
-                font-weight: 700;
+                font-weight: 100;
                 font-family: Spartan-Bold;
                 text-align: center;
                 transition: all ease-in-out 0.3s;
+        
                 &:hover{
                   box-shadow: none;  
                   transform: translateY(4px);
                 }
-            }
-            .btn-primary{
+        }
+
+        &-keypad-button--padding-primary {
+            padding: 1rem 0rem 0.6rem 0rem;
+        }
+
+        &-keypad-button--padding-secondary {
+            padding: 0.7rem 0rem 0.6rem 0rem;
+        }
+
+        &-keypad-button--normal-font {
+            font-size: 1.7rem;           
+        }
+
+        &-keypad-button--small-font {
+            font-size: 1rem;
+        }    
+
+        // Keypad buttons with primary color and shadow   
+
+        &-keypad-button--primary-color {
                 color: var(--primary-text);
                 background-color: var(--primary-key-background);
                 -webkit-box-shadow:0px 4px 0px 0px var(--primary-key-shadow);
                 -moz-box-shadow: 0px 4px 0px 0px var(--primary-key-shadow);
                 box-shadow: 0px 4px 0px 0px var(--primary-key-shadow);
-            }
-            .btn-secondary{
-                padding: 1.3rem 0rem 0.5rem 0rem;
-                font-size: 1.3rem;
-                font-weight: 100;
+        }
+
+        // Keypad buttons with secondary color and shadow
+
+        &-keypad-button--secondary-color {
                 color: var(--secondary-text);
                 background-color: var(--secondary-key-background);
                 -webkit-box-shadow:0px 4px 0px 0px var(--secondary-key-shadow);
                 -moz-box-shadow: 0px 4px 0px 0px var(--secondary-key-shadow);
                 box-shadow: 0px 4px 0px 0px var(--secondary-key-shadow);
-            }
-            .btn-tertiary{
-                padding: 1.3rem 0rem 0.6rem 0rem;
-                font-size: 1.3rem;
-                font-weight: 100;
+        }
+
+        // Keypad buttons with tertiary color and shadow
+
+        &-keypad-button--tertiary-color {
                 color: var(--tertiary-text);
                 background-color: var(--tertiary-key-background);
                 -webkit-box-shadow:0px 4px 0px 0px var(--tertiary-key-shadow);
                 -moz-box-shadow: 0px 4px 0px 0px var(--tertiary-key-shadow);
                 box-shadow: 0px 4px 0px 0px var(--tertiary-key-shadow);
-            }
-            .btn-reset{
-                grid-column-start: 1;
-                grid-column-end: 3;
-            }
-            .btn-equal{
-                grid-column-start: 3;
-                grid-column-end: 5;
-            }
+        }
+
+        // Keypad buttons that span 2 columns
+
+        &-keypad-button--large {
+            grid-column: span 2
         }
     }
 
@@ -288,32 +315,44 @@ html[data-theme='purple']{
 
     &-footer {
         width: 100%;
-        padding: 1rem;
-        display: flex;
-        justify-content: center;
+        padding: 1rem 15%;
         background-color: var(--screen-background);
 
+        // Footer text styling
+
         &__text {
+            color: var(--screen-text);
             font-size: 0.75rem;
             font-family: Spartan-Bold;
-            letter-spacing: 0.1rem;
+            letter-spacing: 0.05rem;
+            line-height: 1.3rem;
             text-align: center;
-            color: var(--screen-text);
         }
+
+        // General footer link styling
 
         &__link {
-            font-size: 0.85rem;
             color: var(--secondary-key-background);
-        }
-        &__link--decoration {
-            text-decoration: none;
+            font-size: 0.75rem;
+            font-family: Spartan-Bold;
+            letter-spacing: 0.05rem;
         }
 
-        &__link--decoration:hover {
-            text-decoration: underline;
+        // Don't show the underline initially
+
+        &__link--underline {
+            text-decoration: none;
+
+            // On hover show the underline
+            
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
 }
+
+// Theme transition
 
 html.theme-transition,
 html.theme-transition *,

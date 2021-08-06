@@ -11,90 +11,104 @@
 
 <body>
   <div class="page">
-    <main class="page-main">
+    <main class="page-main page-main--background-color">
       <article div class="calc">
-        <section class="calc-top">
+        <div class="calc-top">
           <a class="calc-top__brand" href="https://mrgeminus.github.io/calculator-app-main/" target="_self">calc</a>
-          <div class="calc-top__theme-selector">
+          <div class="calc-top__theme-selector-wrapper">
             <p class="calc-top__theme-label">THEME</p>
-            <div class="calc-top__slider-track">
-              <div class="calc-top__slider"></div>
-              <div class="calc-top__theme">
+            <div class="calc-top__theme-selector">
+              <div class="calc-top__theme-numeration">
                 <span class="calc-top__theme-number">1</span>
-                <label for="blue" class="screen-readers-only">Blue theme</label>
-                <input id="blue" class="" type="radio" name="themes">
-              </div>
-              <div class="calc-top__theme">
                 <span class="calc-top__theme-number">2</span>
-                <label for="gray" class="screen-readers-only">Gray theme</label>
-                <input id="gray" class="" type="radio" name="themes">
-              </div>
-              <div class="calc-top__theme">
                 <span class="calc-top__theme-number">3</span>
+              </div>
+              <div class="calc-top__slider-track">
+                <div class="calc-top__slider"></div>
+                <label for="blue" class="screen-readers-only">Blue theme</label>
+                <input id="blue" class="calc-top__theme" type="radio" name="themes">
+                <label for="gray" class="screen-readers-only">Gray theme</label>
+                <input id="gray" class="calc-top__theme" type="radio" name="themes">
                 <label for="violet" class="screen-readers-only">Violet theme</label>
-                <input id="violet" class="" type="radio" name="themes">
+                <input id="violet" class="calc-top__theme" type="radio" name="themes">
               </div>
             </div>
           </div>
-        </section>
-        <section class="calc-screen">
-          <p class="calc-screen-text calc-screen__displayed-value calc-screen__displayed-value--color">0</p>
-        </section>
+        </div>
+        <div class="calc-screen">
+          <p class="calc-screen__displayed-value">0</p>
+        </div>
         <section class="calc-keypad">
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             7
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             8
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             9
           </button>
-          <button class="calc-keypad-button btn-secondary calc-keypad-button--secondary-color">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-secondary calc-keypad-button--small-font calc-keypad-button--secondary-color">
             DEL
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             4
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             5
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             6
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             +
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             1
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             2
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             3
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             -
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             .
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             0
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             /
           </button>
-          <button class="calc-keypad-button calc-keypad-button--primary-color btn-primary">
+          <button
+            class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             x
           </button>
           <button
-            class="calc-keypad-button calc-keypad-button--large calc-keypad-button--secondary-color btn-secondary btn-reset">
+            class="calc-keypad-button calc-keypad-button--padding-secondary calc-keypad-button--small-font calc-keypad-button--large calc-keypad-button--secondary-color">
             RESET
           </button>
           <button
-            class="calc-keypad-button calc-keypad-button--large calc-keypad-button--tertiary-color btn-tertiary btn-equal">
+            class="calc-keypad-button calc-keypad-button--padding-secondary calc-keypad-button--small-font calc-keypad-button--large calc-keypad-button--tertiary-color">
             =
           </button>
         </section>
@@ -102,10 +116,10 @@
     </main>
     <footer class="page-footer">
       <p class="page-footer__text">
-        Challenge by <a class="page-footer__link page-footer__link--decoration"
+        Challenge by <a class="page-footer__link page-footer__link--underline"
           href="https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29" target="_blank">Frontend
           Mentor</a>.
-        Coded by <a class="page-footer__link page-footer__link--decoration"
+        Coded by <a class="page-footer__link page-footer__link--underline"
           href="https://www.frontendmentor.io/profile/MrGeminus" target="_blank">Uros Tomic</a>.
       </p>
     </footer>

@@ -10,7 +10,7 @@ chooseMathOperation = "";
 // Selecting all the buttons
 var calculatorButtons = document.querySelectorAll(".calc-keypad-button");
 // Selecting the display value
-display = document.querySelector(".calc-screen-text");
+display = document.querySelector(".calc-screen__displayed-value");
 // Looping through all buttons and listening for a click event
 calculatorButtons.forEach(function (calculatorButton) {
     calculatorButton.addEventListener("click", pressedButton);
