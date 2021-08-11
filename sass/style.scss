@@ -11,9 +11,13 @@
 	Variables definition
 -----------------------------------------------------*/
 
+$breakpoint: (
+   'medium': '24rem',
+);
+
 // If the data-theme is set to default
 
-html[data-theme='default']{
+html[data-theme='blue']{
     // Background colors  
     --main-background: hsl(222, 26%, 31%);
     --toggler-background: hsl(6, 63%, 50%);
@@ -37,7 +41,7 @@ html[data-theme='default']{
 
 // If the data-theme is set to white
 
-html[data-theme='white']{
+html[data-theme='gray']{
     // Background colors    
     --main-background: hsl(0, 0%, 90%);
     --toggler-background: hsl(25, 98%, 40%);
@@ -61,7 +65,7 @@ html[data-theme='white']{
 
 // If the data-theme is set to purple
 
-html[data-theme='purple']{
+html[data-theme='violet']{
     // Background colors    
     --main-background: hsl(268, 75%, 9%);
     --toggler-background: hsl(176, 100%, 44%);
@@ -81,6 +85,16 @@ html[data-theme='purple']{
     --primary-text: hsl(52, 100%, 62%);
     --secondary-text: hsl(0, 0%, 100%);
     --tertiary-text: hsl(198, 19%, 13%);
+}
+
+/*-----------------------------------------------------
+	Media
+-----------------------------------------------------*/
+
+@mixin breakpoint($value) {
+    @media (min-width: map-get($breakpoint, $value)){
+        @content;
+    }
 }
 
 /*-----------------------------------------------------
@@ -118,6 +132,8 @@ html[data-theme='purple']{
 .page {
     width: 100vw;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 
     // Main content styling 
 
@@ -131,9 +147,12 @@ html[data-theme='purple']{
 
     .calc{
         width: 100%;
-        //max-width: 33rem;
         height: 39.8rem;
         margin: auto;
+
+        @include breakpoint(medium) {
+            max-width: 33rem;
+        }
 
         &-top {
             display: flex;
@@ -213,15 +232,23 @@ html[data-theme='purple']{
 
         &-screen {
             width: 100%;
-            padding: 1.6rem;
+            padding: 1.6rem 1.6rem 0.6rem 1.6rem;
             margin-top: 2rem;
             border-radius: 0.7rem;
             text-align: right;
             background-color: var(--screen-background);
         }  
 
-        &-screen__displayed-value {
+        &-screen__current-value {
             font-size: 2rem;
+            font-weight: 100;
+            font-family: Spartan-Bold;
+            color: var(--screen-text);
+        }
+
+        &-screen__history {
+            min-height: 1rem;
+            font-size: 1rem;
             font-weight: 100;
             font-family: Spartan-Bold;
             color: var(--screen-text);

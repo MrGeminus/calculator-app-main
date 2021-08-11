@@ -1,4 +1,5 @@
-let display: any;
+let currentValue: any;
+let displayedHistory: any;
 let firstValue: string;
 let secondValue: string;
 let result: string
@@ -9,13 +10,19 @@ secondValue = "";
 result = "";
 chooseMathOperation = "";
 
+let themes = document.querySelectorAll(".calc-top__theme");
+
 // Selecting all the buttons
 
 let calculatorButtons = document.querySelectorAll(".calc-keypad-button");
 
-// Selecting the display value
+// Selecting the current display value
 
-display = document.querySelector(".calc-screen__displayed-value");
+currentValue = document.querySelector(".calc-screen__current-value");
+
+// Selecting the display history
+
+displayedHistory = document.querySelector(".calc-screen__history");
 
 // Looping through all buttons and listening for a click event
 
@@ -23,17 +30,23 @@ calculatorButtons.forEach(calculatorButton => {
     calculatorButton.addEventListener("click", pressedButton);
 });
 
+themes.forEach(theme => {
+    theme.addEventListener("click", changeTheme)
+});
+
+setTheme();
+
 // Checking which button has been pressed
 
 function pressedButton(event: any) {
     let buttonValue = event.target.textContent.trim()
-    let displayValue = removePreviousFormatting(display.textContent.trim());
+    let displayValue = removePreviousFormatting(currentValue.textContent.trim());
 
     /* If the pressed button value is 0-9 and the displayed value is
     0, then set the displayed value to button value */
 
     if (/^[0-9]$/.test(buttonValue) && /^[0]$/.test(displayValue)) {
-        display.textContent = buttonValue;
+        currentValue.textContent = buttonValue;
     }
 
     /* If the pressed button value is 0-9 and the displayed value 
@@ -41,7 +54,7 @@ function pressedButton(event: any) {
     displayed value*/
 
     if (/^[0-9]$/.test(buttonValue) && /^[1-9]|[0-9][.]/.test(displayValue) && displayValue.length < 15) {
-        display.textContent = formatString(displayValue + buttonValue);
+        currentValue.textContent = formatString(displayValue + buttonValue);
     }
 
     /* If the pressed button value is DEL, then convert the displayed 
@@ -52,21 +65,22 @@ function pressedButton(event: any) {
         let numbers = displayValue.split("")
         numbers.pop();
         displayValue = numbers.join().replace(/,/g, "")
-        display.textContent = formatString(displayValue)
+        currentValue.textContent = formatString(displayValue)
     }
 
     /* If the pressed button value is RESET, then reset the displayed value
     to 0 */
 
     if (/^RESET$/.test(buttonValue)) {
-        display.textContent = "0"
+        currentValue.textContent = "0"
+        displayedHistory.textContent = ""
     }
 
     /* If the pressed button value is ., then reset the displayed value
     to 0 */
 
     if (/^[.]$/.test(buttonValue) && !(/[.]/.test(displayValue))) {
-        display.textContent = formatString(displayValue + buttonValue)
+        currentValue.textContent = formatString(displayValue + buttonValue)
     }
 
     /* If the pressed buttom value is +, then update the chooseMathOperation,
@@ -76,7 +90,8 @@ function pressedButton(event: any) {
     if (/^[+]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        display.textContent = "0";
+        displayedHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
     }
 
     /* If the pressed buttom value is - */
@@ -84,7 +99,8 @@ function pressedButton(event: any) {
     if (/^[-]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        display.textContent = "0";
+        displayedHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
     }
 
     /* If the pressed buttom value is x */
@@ -92,7 +108,8 @@ function pressedButton(event: any) {
     if (/^[x]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        display.textContent = "0";
+        displayedHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
     }
 
     /* If the pressed buttom value is /, then set */
@@ -100,7 +117,8 @@ function pressedButton(event: any) {
     if (/^[/]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        display.textContent = "0";
+        displayedHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
     }
 
     /* If the pressed buttom value is =, then perform the previously
@@ -120,7 +138,7 @@ function pressedButton(event: any) {
         if (chooseMathOperation === "/") {
             result = performDivision(Number(firstValue), Number(secondValue));
         }
-        display.textContent = formatString(result);
+        currentValue.textContent = formatString(result);
         chooseMathOperation = "";
 
     }
@@ -164,19 +182,42 @@ function formatString(value: string): string {
 
 // A function that changes the theme
 
-function changeTheme() {
-
+function changeTheme(event: any) {
+    let selectedTheme = event.target.id;
+    localStorage.theme = selectedTheme;
+    setTheme();
 }
 
 function setTheme() {
+    if (localStorage.theme == undefined || localStorage.theme == null) {
+        localStorage.theme = 'blue';
+    }
     document.documentElement.setAttribute('data-theme', `${localStorage.theme}`);
+    applyTransition();
+    moveToggler(localStorage.theme)
 }
 
 // A function that moves the theme toggler
 
-function moveToggler() {
-
-
+function moveToggler(currentTheme: any) {
+    let slider: any
+    slider = document.querySelector(".calc-top__slider");
+    if (currentTheme === 'gray') {
+        slider.style.transform = "translateX(" + 1.5 + "rem)";
+    }
+    if (currentTheme === 'violet') {
+        slider.style.transform = "translateX(" + 3 + "rem)";
+    }
+    if (currentTheme === 'blue') {
+        slider.style.transform = "translateX(" + 0 + "rem)";
+    }
 }
 
 // 
+
+function applyTransition() {
+    document.documentElement.classList.add('theme-transition');
+    window.setTimeout(() => {
+        document.documentElement.classList.remove('theme-transition');
+    }, 300)
+}

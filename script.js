@@ -1,4 +1,5 @@
-var display;
+var currentValue;
+var displayedHistory;
 var firstValue;
 var secondValue;
 var result;
@@ -7,28 +8,35 @@ firstValue = "";
 secondValue = "";
 result = "";
 chooseMathOperation = "";
+var themes = document.querySelectorAll(".calc-top__theme");
 // Selecting all the buttons
 var calculatorButtons = document.querySelectorAll(".calc-keypad-button");
-// Selecting the display value
-display = document.querySelector(".calc-screen__displayed-value");
+// Selecting the current display value
+currentValue = document.querySelector(".calc-screen__current-value");
+// Selecting the display history
+displayedHistory = document.querySelector(".calc-screen__history");
 // Looping through all buttons and listening for a click event
 calculatorButtons.forEach(function (calculatorButton) {
     calculatorButton.addEventListener("click", pressedButton);
 });
+themes.forEach(function (theme) {
+    theme.addEventListener("click", changeTheme);
+});
+setTheme();
 // Checking which button has been pressed
 function pressedButton(event) {
     var buttonValue = event.target.textContent.trim();
-    var displayValue = removePreviousFormatting(display.textContent.trim());
+    var displayValue = removePreviousFormatting(currentValue.textContent.trim());
     /* If the pressed button value is 0-9 and the displayed value is
     0, then set the displayed value to button value */
     if (/^[0-9]$/.test(buttonValue) && /^[0]$/.test(displayValue)) {
-        display.textContent = buttonValue;
+        currentValue.textContent = buttonValue;
     }
     /* If the pressed button value is 0-9 and the displayed value
     starts with 1-9 or 0-9 followed by a . concat that value to the
     displayed value*/
     if (/^[0-9]$/.test(buttonValue) && /^[1-9]|[0-9][.]/.test(displayValue) && displayValue.length < 15) {
-        display.textContent = formatString(displayValue + buttonValue);
+        currentValue.textContent = formatString(displayValue + buttonValue);
     }
     /* If the pressed button value is DEL, then convert the displayed
     value to an array, remove the last item, convert the the array back
@@ -37,17 +45,18 @@ function pressedButton(event) {
         var numbers = displayValue.split("");
         numbers.pop();
         displayValue = numbers.join().replace(/,/g, "");
-        display.textContent = formatString(displayValue);
+        currentValue.textContent = formatString(displayValue);
     }
     /* If the pressed button value is RESET, then reset the displayed value
     to 0 */
     if (/^RESET$/.test(buttonValue)) {
-        display.textContent = "0";
+        currentValue.textContent = "0";
+        displayedHistory.textContent = "";
     }
     /* If the pressed button value is ., then reset the displayed value
     to 0 */
     if (/^[.]$/.test(buttonValue) && !(/[.]/.test(displayValue))) {
-        display.textContent = formatString(displayValue + buttonValue);
+        currentValue.textContent = formatString(displayValue + buttonValue);
     }
     /* If the pressed buttom value is +, then update the chooseMathOperation,
     set the firstValue to the displayed value and reset the displayed value
@@ -55,25 +64,29 @@ function pressedButton(event) {
     if (/^[+]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        display.textContent = "0";
+        displayedHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
     }
     /* If the pressed buttom value is - */
     if (/^[-]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        display.textContent = "0";
+        displayedHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
     }
     /* If the pressed buttom value is x */
     if (/^[x]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        display.textContent = "0";
+        displayedHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
     }
     /* If the pressed buttom value is /, then set */
     if (/^[/]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        display.textContent = "0";
+        displayedHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
     }
     /* If the pressed buttom value is =, then perform the previously
     chosen math operation and display the result */
@@ -91,7 +104,7 @@ function pressedButton(event) {
         if (chooseMathOperation === "/") {
             result = performDivision(Number(firstValue), Number(secondValue));
         }
-        display.textContent = formatString(result);
+        currentValue.textContent = formatString(result);
         chooseMathOperation = "";
     }
 }
@@ -120,12 +133,37 @@ function formatString(value) {
     return value.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
 }
 // A function that changes the theme
-function changeTheme() {
+function changeTheme(event) {
+    var selectedTheme = event.target.id;
+    localStorage.theme = selectedTheme;
+    setTheme();
 }
 function setTheme() {
+    if (localStorage.theme == undefined || localStorage.theme == null) {
+        localStorage.theme = 'blue';
+    }
     document.documentElement.setAttribute('data-theme', "" + localStorage.theme);
+    applyTransition();
+    moveToggler(localStorage.theme);
 }
 // A function that moves the theme toggler
-function moveToggler() {
+function moveToggler(currentTheme) {
+    var slider;
+    slider = document.querySelector(".calc-top__slider");
+    if (currentTheme === 'gray') {
+        slider.style.transform = "translateX(" + 1.5 + "rem)";
+    }
+    if (currentTheme === 'violet') {
+        slider.style.transform = "translateX(" + 3 + "rem)";
+    }
+    if (currentTheme === 'blue') {
+        slider.style.transform = "translateX(" + 0 + "rem)";
+    }
 }
 // 
+function applyTransition() {
+    document.documentElement.classList.add('theme-transition');
+    window.setTimeout(function () {
+        document.documentElement.classList.remove('theme-transition');
+    }, 300);
+}
