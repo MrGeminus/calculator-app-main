@@ -1,5 +1,7 @@
+// Defining variables
+
 let currentValue: any;
-let displayedHistory: any;
+let displayHistory: any;
 let firstValue: string;
 let secondValue: string;
 let result: string
@@ -10,9 +12,11 @@ secondValue = "";
 result = "";
 chooseMathOperation = "";
 
+// Selecting all checkboxes with the class name calc-top__theme
+
 let themes = document.querySelectorAll(".calc-top__theme");
 
-// Selecting all the buttons
+// Selecting all the keypad buttons with the class name calc-keypad-button
 
 let calculatorButtons = document.querySelectorAll(".calc-keypad-button");
 
@@ -22,21 +26,25 @@ currentValue = document.querySelector(".calc-screen__current-value");
 
 // Selecting the display history
 
-displayedHistory = document.querySelector(".calc-screen__history");
+displayHistory = document.querySelector(".calc-screen__history");
 
-// Looping through all buttons and listening for a click event
+// Looping through all keypad buttons and listening for a click event
 
 calculatorButtons.forEach(calculatorButton => {
     calculatorButton.addEventListener("click", pressedButton);
 });
 
+// Looping through all checkboxes and listening for a click event
+
 themes.forEach(theme => {
     theme.addEventListener("click", changeTheme)
 });
 
+// When the document loads call the function that set the theme
+
 setTheme();
 
-// Checking which button has been pressed
+// Checking which button has been pressed and acting appropriately
 
 function pressedButton(event: any) {
     let buttonValue = event.target.textContent.trim()
@@ -64,6 +72,9 @@ function pressedButton(event: any) {
     if (/^DEL$/.test(buttonValue)) {
         let numbers = displayValue.split("")
         numbers.pop();
+        if (numbers.length == 0) {
+            numbers.push('0')
+        }
         displayValue = numbers.join().replace(/,/g, "")
         currentValue.textContent = formatString(displayValue)
     }
@@ -73,59 +84,62 @@ function pressedButton(event: any) {
 
     if (/^RESET$/.test(buttonValue)) {
         currentValue.textContent = "0"
-        displayedHistory.textContent = ""
+        displayHistory.textContent = ""
+        chooseMathOperation = ""
+        firstValue = ""
+        secondValue = ""
+        result = ""
     }
 
-    /* If the pressed button value is ., then reset the displayed value
-    to 0 */
+    // If the pressed button value is .
 
     if (/^[.]$/.test(buttonValue) && !(/[.]/.test(displayValue))) {
         currentValue.textContent = formatString(displayValue + buttonValue)
     }
 
-    /* If the pressed buttom value is +, then update the chooseMathOperation,
-    set the firstValue to the displayed value and reset the displayed value 
-    to 0 */
+    // If the pressed buttom value is +
 
     if (/^[+]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        displayedHistory.textContent = displayValue + buttonValue;
+        displayHistory.textContent = displayValue + buttonValue;
         currentValue.textContent = "0";
     }
 
-    /* If the pressed buttom value is - */
+    // If the pressed buttom value is -
 
     if (/^[-]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        displayedHistory.textContent = displayValue + buttonValue;
+        displayHistory.textContent = displayValue + buttonValue;
         currentValue.textContent = "0";
     }
 
-    /* If the pressed buttom value is x */
+    // If the pressed buttom value is x
 
     if (/^[x]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        displayedHistory.textContent = displayValue + buttonValue;
+        displayHistory.textContent = displayValue + buttonValue;
         currentValue.textContent = "0";
     }
 
-    /* If the pressed buttom value is /, then set */
+    // If the pressed buttom value is /
 
     if (/^[/]$/.test(buttonValue) && chooseMathOperation === "") {
         chooseMathOperation = buttonValue;
         firstValue = displayValue;
-        displayedHistory.textContent = displayValue + buttonValue;
+        displayHistory.textContent = displayValue + buttonValue;
         currentValue.textContent = "0";
     }
 
     /* If the pressed buttom value is =, then perform the previously
-    chosen math operation and display the result */
+    chosen math operation, display the result and reset the math 
+    operation variable to empty string */
 
     if (/^[=]$/.test(buttonValue) && !(chooseMathOperation === "")) {
         secondValue = displayValue;
+        displayHistory.textContent = displayHistory.textContent + secondValue + buttonValue;
         if (chooseMathOperation === "+") {
             result = performAddition(Number(firstValue), Number(secondValue));
         }
@@ -168,13 +182,13 @@ function performDivision(firstValue: number, secondValue: number): string {
     return (firstValue / secondValue).toString();
 }
 
-// A function that removes the previous formatting
+// A function that returns a string without thousand separators
 
 function removePreviousFormatting(value: string): string {
     return value.replace(/[,]/g, "")
 }
 
-// A function that returns a formatted string
+// A function that returns a string with the thousand separators
 
 function formatString(value: string): string {
     return value.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
@@ -188,18 +202,20 @@ function changeTheme(event: any) {
     setTheme();
 }
 
+// A function that actually sets the theme
+
 function setTheme() {
     if (localStorage.theme == undefined || localStorage.theme == null) {
         localStorage.theme = 'blue';
     }
     document.documentElement.setAttribute('data-theme', `${localStorage.theme}`);
     applyTransition();
-    moveToggler(localStorage.theme)
+    moveSlider(localStorage.theme)
 }
 
-// A function that moves the theme toggler
+// A function that changes the position of the slider on the track
 
-function moveToggler(currentTheme: any) {
+function moveSlider(currentTheme: any) {
     let slider: any
     slider = document.querySelector(".calc-top__slider");
     if (currentTheme === 'gray') {
@@ -213,11 +229,12 @@ function moveToggler(currentTheme: any) {
     }
 }
 
-// 
+/* A function that applies the transition class for 300ms to the 
+document for a smooth theme switch */
 
 function applyTransition() {
     document.documentElement.classList.add('theme-transition');
     window.setTimeout(() => {
         document.documentElement.classList.remove('theme-transition');
-    }, 300)
+    }, 300);
 }

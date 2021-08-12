@@ -1,270 +1,181 @@
-let keypadButtons = document.querySelectorAll(".calc-keypad-button");
-let themes = document.querySelectorAll('input[name="themes"]');
-let isPlus = /[+]/;
-let isMinus = /[-]/;
-let isTimes = /[x]/;
-let isSlash = /[/]/;
-let isDot = /[.]/;
-let isEqual = /[=]/;
-let isReset = /RESET/;
-let isDelete = /DEL/
-let fistValue = "0";
-let secondValue = "0";
-let result = "";
-let mathOperatinActive = false;
-let additionChosen = false;
-let subtractionChosen = false;
-let multiplicationChosen = false;
-let divisionChosen = false;
-let calculationDone = false;
-let firstIsDecimalNum = false;
-let secondIsDecimalNum = false;
-keypadButtons.forEach(keypadButton => {
-    function buttonPressed() {
-        let screenText = document.querySelector(".calc-screen-text");
-        let key = keypadButton.textContent;
-        if (!isReset.test(key) && !isDelete.test(key) && !isDot.test(key) && !isPlus.test(key) && !isMinus.test(key) && !isTimes.test(key) && !isSlash.test(key) && !isEqual.test(key) && /^[0]/.test(screenText.textContent) && !/^[0][.]/.test(screenText.textContent)) {
-            if (mathOperatinActive == false && calculationDone == false) {
-                fistValue = key.trim();
-                screenText.textContent = fistValue.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-            }
-            else {
-                secondValue = key.trim();
-                screenText.textContent = secondValue.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-            }
-        }
-        else if (!isReset.test(key) && !isDelete.test(key) && !isDot.test(key) && !isPlus.test(key) && !isMinus.test(key) && !isTimes.test(key) && !isSlash.test(key) && !isEqual.test(key) && (!/^[0][0-9]/.test(screenText.textContent) || /^[0][.]/.test(screenText.textContent))) {
-            if (mathOperatinActive == false && calculationDone == false) {
-                fistValue = fistValue + key.trim();
-                screenText.textContent = fistValue.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-            }
-            else {
-                secondValue = secondValue + key.trim();
-                screenText.textContent = secondValue.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-            }
-        }
-        else if (isReset.test(key) && !isDelete.test(key)) {
-            screenText.textContent = 0;
-            mathOperatinActive = false;
-            additionChosen = false;
-            subtractionChosen = false;
-            multiplicationChosen = false;
-            divisionChosen = false;
-            firstIsDecimalNum = false;
-            secondIsDecimalNum = false;
-            calculationDone = false;
-            fistValue = "0";
-            secondValue = "0";
-        }
-        else if (isDot.test(key) && calculationDone == false) {
-            if (firstIsDecimalNum == false) {
-                fistValue = fistValue + key.trim();
-                screenText.textContent = fistValue;
-                firstIsDecimalNum = true;
-            }
-            else if (secondIsDecimalNum == false && mathOperatinActive == true) {
-                secondValue = secondValue + key.trim();
-                screenText.textContent = secondValue;
-                secondIsDecimalNum = true;
-            }
-        }
-        else if (isDelete.test(key)) {
-            oldSreenValue = screenText.textContent.trim()
-            let screenTextArray = [];
-            for (let i = 0; i < oldSreenValue.length; i++) {
-                screenTextArray.push(oldSreenValue.substr(i, 1));
-            }
-            screenTextArray.pop();
-            if (screenTextArray[screenTextArray.length - 1] == ".") {
-                screenTextArray.pop();
-            }
-            let newSreenValue = "";
-            for (let i = 1; i <= screenTextArray.length; i++) {
-                if (screenTextArray[i - 1] != ',') {
-                    newSreenValue += screenTextArray[i - 1];
-                }
-            }
-            if (newSreenValue.length != 0) {
-                screenText.textContent = newSreenValue.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",")
-                if (mathOperatinActive == false && calculationDone == false) {
-                    fistValue = newSreenValue;
-                }
-                else {
-                    secondValue = newSreenValue;
-                }
-            }
-            else {
-                screenText.textContent = 0;
-                if (mathOperatinActive == false && calculationDone == false) {
-                    fistValue = "0";
-                }
-                else {
-                    secondValue = "0";
-                }
-            }
-        }
-        else if (isPlus.test(key) && mathOperatinActive == false) {
-            additionChosen = true;
-            screenText.textContent = 0;
-            mathOperatinActive = true;
-        }
-        else if (isMinus.test(key) && mathOperatinActive == false) {
-            subtractionChosen = true;
-            screenText.textContent = 0;
-            mathOperatinActive = true;
-        }
-        else if (isTimes.test(key) && mathOperatinActive == false) {
-            multiplicationChosen = true;
-            screenText.textContent = 0;
-            mathOperatinActive = true;
-        }
-        else if (isSlash.test(key) && mathOperatinActive == false) {
-            divisionChosen = true;
-            screenText.textContent = 0;
-            mathOperatinActive = true;
-        }
-        else if (isEqual.test(key)) {
-            if (additionChosen == true) {
-                result = Number(fistValue) + Number(secondValue);
-                screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-                fistValue = result;
-                secondValue = "0"
-                mathOperatinActive = false;
-                additionChosen = false;
-                calculationDone = true;
-            }
-            else if (subtractionChosen == true) {
-                result = Number(fistValue) - Number(secondValue);
-                screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-                fistValue = result;
-                secondValue = "0"
-                mathOperatinActive = false;
-                subtractionChosen = false;
-                calculationDone = true;
-            }
-            else if (multiplicationChosen == true) {
-                result = Number(fistValue) * Number(secondValue);
-                screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-                fistValue = result;
-                secondValue = "0"
-                mathOperatinActive = false;
-                multiplicationChosen = false;
-                calculationDone = true;
-            }
-            else if (divisionChosen == true) {
-                result = Number(fistValue) / Number(secondValue);
-                screenText.textContent = result.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
-                fistValue = result;
-                secondValue = "0"
-                mathOperatinActive = false;
-                divisionChosen = false;
-                calculationDone = true;
-            }
-        }
-    }
-    keypadButton.addEventListener("click", buttonPressed);
+// Defining variables
+var currentValue;
+var displayHistory;
+var firstValue;
+var secondValue;
+var result;
+var chooseMathOperation;
+firstValue = "";
+secondValue = "";
+result = "";
+chooseMathOperation = "";
+// Selecting all checkboxes with the class name calc-top__theme
+var themes = document.querySelectorAll(".calc-top__theme");
+// Selecting all the keypad buttons with the class name calc-keypad-button
+var calculatorButtons = document.querySelectorAll(".calc-keypad-button");
+// Selecting the current display value
+currentValue = document.querySelector(".calc-screen__current-value");
+// Selecting the display history
+displayHistory = document.querySelector(".calc-screen__history");
+// Looping through all keypad buttons and listening for a click event
+calculatorButtons.forEach(function (calculatorButton) {
+    calculatorButton.addEventListener("click", pressedButton);
 });
-themes.forEach(theme => {
-    function changeTheme() {
-        selectedTheme = theme.getAttribute("id");
-        currentTheme = document.documentElement.getAttribute("data-theme");
-        if (selectedTheme != currentTheme) {
-            trans();
-            moveBall(selectedTheme, currentTheme);
-            document.documentElement.setAttribute('data-theme', `${selectedTheme}`);
-        }
-    }
+// Looping through all checkboxes and listening for a click event
+themes.forEach(function (theme) {
     theme.addEventListener("click", changeTheme);
 });
-let trans = () => {
+// When the document loads call the function that set the theme
+setTheme();
+// Checking which button has been pressed and acting appropriately
+function pressedButton(event) {
+    var buttonValue = event.target.textContent.trim();
+    var displayValue = removePreviousFormatting(currentValue.textContent.trim());
+    /* If the pressed button value is 0-9 and the displayed value is
+    0, then set the displayed value to button value */
+    if (/^[0-9]$/.test(buttonValue) && /^[0]$/.test(displayValue)) {
+        currentValue.textContent = buttonValue;
+    }
+    /* If the pressed button value is 0-9 and the displayed value
+    starts with 1-9 or 0-9 followed by a . concat that value to the
+    displayed value*/
+    if (/^[0-9]$/.test(buttonValue) && /^[1-9]|[0-9][.]/.test(displayValue) && displayValue.length < 15) {
+        currentValue.textContent = formatString(displayValue + buttonValue);
+    }
+    /* If the pressed button value is DEL, then convert the displayed
+    value to an array, remove the last item, convert the the array back
+    to a string and format and output the new string*/
+    if (/^DEL$/.test(buttonValue)) {
+        var numbers = displayValue.split("");
+        numbers.pop();
+        if (numbers.length == 0) {
+            numbers.push('0');
+        }
+        displayValue = numbers.join().replace(/,/g, "");
+        currentValue.textContent = formatString(displayValue);
+    }
+    /* If the pressed button value is RESET, then reset the displayed value
+    to 0 */
+    if (/^RESET$/.test(buttonValue)) {
+        currentValue.textContent = "0";
+        displayHistory.textContent = "";
+        chooseMathOperation = "";
+        firstValue = "";
+        secondValue = "";
+        result = "";
+    }
+    // If the pressed button value is .
+    if (/^[.]$/.test(buttonValue) && !(/[.]/.test(displayValue))) {
+        currentValue.textContent = formatString(displayValue + buttonValue);
+    }
+    // If the pressed buttom value is +
+    if (/^[+]$/.test(buttonValue) && chooseMathOperation === "") {
+        chooseMathOperation = buttonValue;
+        firstValue = displayValue;
+        displayHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
+    }
+    // If the pressed buttom value is -
+    if (/^[-]$/.test(buttonValue) && chooseMathOperation === "") {
+        chooseMathOperation = buttonValue;
+        firstValue = displayValue;
+        displayHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
+    }
+    // If the pressed buttom value is x
+    if (/^[x]$/.test(buttonValue) && chooseMathOperation === "") {
+        chooseMathOperation = buttonValue;
+        firstValue = displayValue;
+        displayHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
+    }
+    // If the pressed buttom value is /
+    if (/^[/]$/.test(buttonValue) && chooseMathOperation === "") {
+        chooseMathOperation = buttonValue;
+        firstValue = displayValue;
+        displayHistory.textContent = displayValue + buttonValue;
+        currentValue.textContent = "0";
+    }
+    /* If the pressed buttom value is =, then perform the previously
+    chosen math operation, display the result and reset the math
+    operation variable to empty string */
+    if (/^[=]$/.test(buttonValue) && !(chooseMathOperation === "")) {
+        secondValue = displayValue;
+        displayHistory.textContent = displayHistory.textContent + secondValue + buttonValue;
+        if (chooseMathOperation === "+") {
+            result = performAddition(Number(firstValue), Number(secondValue));
+        }
+        if (chooseMathOperation === "-") {
+            result = performSubtraction(Number(firstValue), Number(secondValue));
+        }
+        if (chooseMathOperation === "*") {
+            result = performMultiplication(Number(firstValue), Number(secondValue));
+        }
+        if (chooseMathOperation === "/") {
+            result = performDivision(Number(firstValue), Number(secondValue));
+        }
+        currentValue.textContent = formatString(result);
+        chooseMathOperation = "";
+    }
+}
+// A function that performs addition and returns the result
+function performAddition(firstValue, secondValue) {
+    return (firstValue + secondValue).toString();
+}
+// A function that performs subtraction and returns the result
+function performSubtraction(firstValue, secondValue) {
+    return (firstValue - secondValue).toString();
+}
+// A function that performs multiplication and returns the result
+function performMultiplication(firstValue, secondValue) {
+    return (firstValue * secondValue).toString();
+}
+// A function that performs division and returns the result
+function performDivision(firstValue, secondValue) {
+    return (firstValue / secondValue).toString();
+}
+// A function that returns a string without thousand separators
+function removePreviousFormatting(value) {
+    return value.replace(/[,]/g, "");
+}
+// A function that returns a string with the thousand separators
+function formatString(value) {
+    return value.replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+}
+// A function that changes the theme
+function changeTheme(event) {
+    var selectedTheme = event.target.id;
+    localStorage.theme = selectedTheme;
+    setTheme();
+}
+// A function that actually sets the theme
+function setTheme() {
+    if (localStorage.theme == undefined || localStorage.theme == null) {
+        localStorage.theme = 'blue';
+    }
+    document.documentElement.setAttribute('data-theme', "" + localStorage.theme);
+    applyTransition();
+    moveSlider(localStorage.theme);
+}
+// A function that changes the position of the slider on the track
+function moveSlider(currentTheme) {
+    var slider;
+    slider = document.querySelector(".calc-top__slider");
+    if (currentTheme === 'gray') {
+        slider.style.transform = "translateX(" + 1.5 + "rem)";
+    }
+    if (currentTheme === 'violet') {
+        slider.style.transform = "translateX(" + 3 + "rem)";
+    }
+    if (currentTheme === 'blue') {
+        slider.style.transform = "translateX(" + 0 + "rem)";
+    }
+}
+/* A function that applies the transition class for 300ms to the
+document for a smooth theme switch */
+function applyTransition() {
     document.documentElement.classList.add('theme-transition');
-    window.setTimeout(() => {
+    window.setTimeout(function () {
         document.documentElement.classList.remove('theme-transition');
-    }, 1000)
+    }, 300);
 }
-let moveBall = (selectedTheme, currentTheme) => {
-    let ball = document.querySelector(".selector-ball");
-    if (screen.width > 550) {
-        if (selectedTheme == "default" && currentTheme == "white") {
-            ball.style.transform = "translateX(" + 0 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-        else if (selectedTheme == "default" && currentTheme == "purple") {
-            ball.style.transform = "translateX(" + 0 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-        else if (selectedTheme == "white" && currentTheme == "default") {
-            ball.style.transform = "translateX(" + 1.3 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-        else if (selectedTheme == "white" && currentTheme == "purple") {
-            ball.style.transform = "translateX(" + 1.3 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-        else if (selectedTheme == "purple" && currentTheme == "default") {
-            ball.style.transform = "translateX(" + 2.6 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-        else if (selectedTheme == "purple" && currentTheme == "white") {
-            ball.style.transform = "translateX(" + 2.6 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-    }
-    else {
-        if (selectedTheme == "default" && currentTheme == "white") {
-            ball.style.transform = "translateX(" + 0.04 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-        else if (selectedTheme == "default" && currentTheme == "purple") {
-            ball.style.transform = "translateX(" + 0.04 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-        else if (selectedTheme == "white" && currentTheme == "default") {
-            ball.style.transform = "translateX(" + 1.42 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-        else if (selectedTheme == "white" && currentTheme == "purple") {
-            ball.style.transform = "translateX(" + 1.42 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-        else if (selectedTheme == "purple" && currentTheme == "default") {
-            ball.style.transform = "translateX(" + 2.9 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-        else if (selectedTheme == "purple" && currentTheme == "white") {
-            ball.style.transform = "translateX(" + 2.9 + "rem)";
-            localStorage.setItem("preferredTheme", `${selectedTheme}`);
-        }
-    }
-}
-function preferredTheme() {
-    let ball = document.querySelector(".selector-ball");
-    if (localStorage.getItem("preferredTheme") != undefined && screen.width > 550) {
-        document.documentElement.setAttribute('data-theme', `${localStorage.getItem("preferredTheme")}`);
-        if (localStorage.getItem("preferredTheme") == "white") {
-            ball.style.transform = "translateX(" + 1.3 + "rem)";
-        }
-        else if (localStorage.getItem("preferredTheme") == "purple") {
-            ball.style.transform = "translateX(" + 2.6 + "rem)";
-        }
-        else if (localStorage.getItem("preferredTheme") == "default") {
-            ball.style.transform = "translateX(" + 0 + "rem)";
-
-        }
-    }
-    if (localStorage.getItem("preferredTheme") != undefined && screen.width <= 550) {
-        document.documentElement.setAttribute('data-theme', `${localStorage.getItem("preferredTheme")}`);
-        if (localStorage.getItem("preferredTheme") == "white") {
-            ball.style.transform = "translateX(" + 1.42 + "rem)";
-        }
-        else if (localStorage.getItem("preferredTheme") == "purple") {
-            ball.style.transform = "translateX(" + 2.9 + "rem)";
-        }
-        else if (localStorage.getItem("preferredTheme") == "default") {
-            ball.style.transform = "translateX(" + 0.04 + "rem)";
-
-        }
-    }
-}
-preferredTheme();
-

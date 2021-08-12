@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="default">
+<!-- data-theme will contain the theme value -->
+<html lang="en" data-theme="">
 
 <head>
   <meta charset="UTF-8">
@@ -10,10 +11,15 @@
 </head>
 
 <body>
+  <!-- Document starts here -->
   <div class="page">
+    <!-- Page main content starts here -->
     <main class="page-main page-main--background-color">
+      <!-- Calculator app starts here -->
       <article div class="calc">
+        <!-- The top part of the calculator app starts here -->
         <div class="calc-top">
+          <!-- Logo -->
           <a class="calc-top__brand" href="https://mrgeminus.github.io/calculator-app-main/" target="_self">calc</a>
           <div class="calc-top__theme-selector-wrapper">
             <p class="calc-top__theme-label">THEME</p>
@@ -23,7 +29,9 @@
                 <span class="calc-top__theme-number">2</span>
                 <span class="calc-top__theme-number">3</span>
               </div>
+              <!-- The track where themes and the -->
               <div class="calc-top__slider-track">
+                <!-- Slider that moves with the theme change -->
                 <div class="calc-top__slider"></div>
                 <label for="blue" class="screen-readers-only">Blue theme</label>
                 <input id="blue" class="calc-top__theme" type="radio" name="themes">
@@ -35,10 +43,16 @@
             </div>
           </div>
         </div>
+        <!-- The top part of the calculator app ends here -->
+        <!-- Calculator screen starts here -->
         <div class="calc-screen">
+          <!-- The manipulated value on the screen -->
           <p class="calc-screen__current-value">0</p>
+          <!-- Calculation history which is displayed on the calculator screen -->
           <p class="calc-screen__history"></p>
         </div>
+        <!-- Calculator screen ends here -->
+        <!-- Calculator keypad starts here -->
         <section class="calc-keypad">
           <button
             class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
@@ -113,19 +127,27 @@
             =
           </button>
         </section>
+        <!-- Calculator keypad ends here -->
       </article>
+      <!-- Calculator app ends here -->
     </main>
+    <!-- Page main content ends here -->
+    <!-- Page footer content starts here -->
     <footer class="page-footer">
       <p class="page-footer__text">
         Challenge by <a class="page-footer__link page-footer__link--underline"
-          href="https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29" target="_blank">Frontend
+          href="https://www.frontendmentor.io/challenges/calculator-app-9lteq5N29" target="_blank"
+          rel="noopener">Frontend
           Mentor</a>.
         Coded by <a class="page-footer__link page-footer__link--underline"
-          href="https://www.frontendmentor.io/profile/MrGeminus" target="_blank">Uros Tomic</a>.
+          href="https://www.frontendmentor.io/profile/MrGeminus" target="_blank" rel="noopener">Uros Tomic</a>.
       </p>
     </footer>
+    <!-- Page footer content ends here -->
   </div>
-  <script src="script.js"></script>
+  <!-- Document ends here -->
+  <!-- Importing the JavaScript file -->
+  <script src="js/script.js"></script>
 </body>
 
 </html>
