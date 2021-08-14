@@ -15,10 +15,13 @@
   <div class="page">
     <!-- Page main content starts here -->
     <main class="page-main page-main--background-color">
+      <h1 class="screen-readers-only">Main content</h1>
       <!-- Calculator app starts here -->
-      <article div class="calc">
+      <article class="calc">
+        <h2 class="screen-readers-only">Calculator App</h2>
         <!-- The top part of the calculator app starts here -->
-        <div class="calc-top">
+        <section class="calc-top">
+          <h3 class="screen-readers-only">Calculator Top</h3>
           <!-- Logo -->
           <a class="calc-top__brand" href="https://mrgeminus.github.io/calculator-app-main/" target="_self">calc</a>
           <div class="calc-top__theme-selector-wrapper">
@@ -42,18 +45,20 @@
               </div>
             </div>
           </div>
-        </div>
+        </section>
         <!-- The top part of the calculator app ends here -->
         <!-- Calculator screen starts here -->
-        <div class="calc-screen">
+        <section class="calc-screen">
+          <h3 class="screen-readers-only">Calculator Screen</h3>
           <!-- The manipulated value on the screen -->
           <p class="calc-screen__current-value">0</p>
           <!-- Calculation history which is displayed on the calculator screen -->
           <p class="calc-screen__history"></p>
-        </div>
+        </section>
         <!-- Calculator screen ends here -->
         <!-- Calculator keypad starts here -->
         <section class="calc-keypad">
+          <h3 class="screen-readers-only">Calculator Keypad</h3>
           <button
             class="calc-keypad-button calc-keypad-button--padding-primary calc-keypad-button--normal-font calc-keypad-button--primary-color">
             7

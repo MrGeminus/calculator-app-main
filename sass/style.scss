@@ -15,76 +15,91 @@ $breakpoint: (
    'medium': '24rem',
 );
 
-// If the data-theme is set to default
+// If the data-theme is set to blue
 
 html[data-theme='blue']{
     // Background colors  
     --main-background: hsl(222, 26%, 31%);
-    --toggler-background: hsl(6, 63%, 50%);
-    --toggler-track-background: hsl(223, 31%, 20%);
+    --slider-background: hsl(6, 63%, 50%);
+    --slider-track-background: hsl(223, 31%, 20%);
     --keypad-background: hsl(223, 31%, 20%);
     --screen-background: hsl(224, 36%, 15%);
-    --primary-key-background: hsl(30, 25%, 89%);
-    --secondary-key-background: hsl(225, 21%, 49%);
-    --tertiary-key-background: hsl(6, 63%, 50%);
+    --primary-button-background: hsl(30, 25%, 89%);
+    --secondary-button-background: hsl(225, 21%, 49%);
+    --tertiary-button-background: hsl(6, 63%, 50%);
+    --footer-background: hsl(223, 31%, 20%);
     // Shadow colors
-    --primary-key-shadow: hsl(28, 16%, 65%);
-    --secondary-key-shadow: hsl(224, 28%, 35%);
-    --tertiary-key-shadow: hsl(6, 70%, 34%);
+    --primary-button-shadow: hsl(28, 16%, 65%);
+    --secondary-button-shadow: hsl(224, 28%, 35%);
+    --tertiary-button-shadow: hsl(6, 70%, 34%);
     // Text colors
-    --brand-color: hsl(0, 0%, 100%);
+    --brand-text: hsl(0, 0%, 100%);
     --screen-text: hsl(0, 0%, 100%);
-    --primary-text: hsl(221, 14%, 31%);
-    --secondary-text: hsl(0, 0%, 100%);
-    --tertiary-text: hsl(0, 0%, 100%);
+    --history-text: hsl(0, 0%, 100%);
+    --theme-selector-text: hsl(0, 0%, 100%);
+    --primary-button-text: hsl(221, 14%, 31%);
+    --secondary-button-text: hsl(0, 0%, 100%);
+    --tertiary-button-text: hsl(0, 0%, 100%);
+    --footer-text: hsl(0, 0%, 100%);
+    --footer-link-text: hsl(225, 21%, 49%);
 }
 
-// If the data-theme is set to white
+// If the data-theme is set to gray
 
 html[data-theme='gray']{
     // Background colors    
     --main-background: hsl(0, 0%, 90%);
-    --toggler-background: hsl(25, 98%, 40%);
-    --toggler-track-background: hsl(0, 5%, 81%);
+    --slider-background: hsl(25, 98%, 40%);
+    --slider-track-background: hsl(0, 5%, 81%);
     --keypad-background: hsl(0, 5%, 81%);
     --screen-background: hsl(0, 0%, 93%);
-    --primary-key-background: hsl(45, 7%, 89%);
-    --secondary-key-background: hsl(185, 42%, 37%);
-    --tertiary-key-background: hsl(25, 98%, 40%);
+    --primary-button-background: hsl(45, 7%, 89%);
+    --secondary-button-background: hsl(185, 42%, 37%);
+    --tertiary-button-background: hsl(25, 98%, 40%);
+    --footer-background: hsl(0, 5%, 81%);
     // Shadow colors
-    --primary-key-shadow: hsl(35, 11%, 61%);
-    --secondary-key-shadow: hsl(185, 58%, 25%);
-    --tertiary-key-shadow: hsl(25, 99%, 27%);
+    --primary-button-shadow: hsl(35, 11%, 61%);
+    --secondary-button-shadow: hsl(185, 58%, 25%);
+    --tertiary-button-shadow: hsl(25, 99%, 27%);
     // Text colors
-    --brand-color: hsl(60, 9%, 19%);
+    --brand-text: hsl(60, 9%, 19%);
     --screen-text: hsl(60, 9%, 19%);
-    --primary-text: hsl(60, 9%, 19%);
-    --secondary-text: hsl(0, 0%, 100%);
-    --tertiary-text: hsl(0, 0%, 100%);
+    --history-text: hsl(60, 9%, 19%);
+    --theme-selector-text: hsl(60, 9%, 19%);
+    --primary-button-text: hsl(60, 9%, 19%);
+    --secondary-button-text: hsl(0, 0%, 100%);
+    --tertiary-button-text: hsl(0, 0%, 100%);
+    --footer-text: hsl(60, 9%, 19%);
+    --footer-link-text: hsl(185, 42%, 37%);
 }
 
-// If the data-theme is set to purple
+// If the data-theme is set to violet
 
 html[data-theme='violet']{
     // Background colors    
     --main-background: hsl(268, 75%, 9%);
-    --toggler-background: hsl(176, 100%, 44%);
-    --toggler-track-background: hsl(268, 71%, 12%);
+    --slider-background: hsl(176, 100%, 44%);
+    --slider-track-background: hsl(268, 71%, 12%);
     --keypad-background: hsl(268, 71%, 12%);
     --screen-background: hsl(268, 71%, 12%);
-    --primary-key-background: hsl(268, 47%, 21%);
-    --secondary-key-background: hsl(281, 89%, 26%);
-    --tertiary-key-background: hsl(176, 100%, 44%);
+    --primary-button-background: hsl(268, 47%, 21%);
+    --secondary-button-background: hsl(281, 89%, 26%);
+    --tertiary-button-background: hsl(176, 100%, 44%);
+    --footer-background: hsl(268, 71%, 12%);
     // Shadow colors
-    --primary-key-shadow: hsl(290, 70%, 36%);
-    --secondary-key-shadow: hsl(285, 91%, 52%);
-    --tertiary-key-shadow: hsl(177, 92%, 70%);
+    --primary-button-shadow: hsl(290, 70%, 36%);
+    --secondary-button-shadow: hsl(285, 91%, 52%);
+    --tertiary-button-shadow: hsl(177, 92%, 70%);
     // Text colors
-    --brand-color: hsl(52, 100%, 62%);
+    --brand-text: hsl(52, 100%, 62%);
     --screen-text: hsl(52, 100%, 62%);
-    --primary-text: hsl(52, 100%, 62%);
-    --secondary-text: hsl(0, 0%, 100%);
-    --tertiary-text: hsl(198, 19%, 13%);
+    --history-text: hsl(52, 100%, 62%);
+    --theme-selector-text: hsl(52, 100%, 62%);
+    --primary-button-text: hsl(52, 100%, 62%);
+    --secondary-button-text: hsl(0, 0%, 100%);
+    --tertiary-button-text: hsl(198, 19%, 13%);
+    --footer-text: hsl(52, 100%, 62%);
+    --footer-link-text: hsl(281, 89%, 26%);
 }
 
 /*-----------------------------------------------------
@@ -126,7 +141,7 @@ html[data-theme='violet']{
 }
 
 /*-----------------------------------------------------
-	Main styling with the mobile first approach
+	Component styling with mobile first approach
 -----------------------------------------------------*/
 
 .page {
@@ -135,7 +150,7 @@ html[data-theme='violet']{
     display: flex;
     flex-direction: column;
 
-    // Main content styling 
+    // Main content wrapper styling 
 
     &-main {
         width: 100%;
@@ -145,14 +160,18 @@ html[data-theme='violet']{
         background-color: var(--main-background);
     }  
 
+    // Calc component styling
+
     .calc{
         width: 100%;
         height: 39.8rem;
         margin: auto;
 
         @include breakpoint(medium) {
-            max-width: 33rem;
+            max-width: 30rem;
         }
+
+        // Calc top styling
 
         &-top {
             display: flex;
@@ -160,7 +179,7 @@ html[data-theme='violet']{
         }
 
         &-top__brand {
-            color: var(--brand-color);
+            color: var(--brand-text);
             font-size: 1.95rem;
             font-family: Spartan-Bold;
             text-decoration: none;
@@ -175,7 +194,7 @@ html[data-theme='violet']{
             padding-bottom: 0.2rem;
             margin-right: 1.3rem;
             margin-top: auto;
-            color: var(--brand-color);
+            color: var(--theme-selector-text);
             font-size: 0.75rem;
             font-weight: 100;
             font-family: Spartan-Bold;
@@ -194,7 +213,7 @@ html[data-theme='violet']{
         }
 
         &-top__theme-number {
-            color: var(--brand-color);
+            color: var(--theme-selector-text);
             font-size: 0.7rem;
             font-weight: 100;
             font-family: Spartan-Bold;
@@ -209,7 +228,7 @@ html[data-theme='violet']{
             border-radius: 0.9rem;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            background-color: var(--toggler-track-background);
+            background-color: var(--slider-track-background);
         }
 
         &-top__slider {
@@ -219,7 +238,7 @@ html[data-theme='violet']{
             top: 0.3rem;
             left: 0.3rem;
             border-radius: 100%;
-            background-color: var(--toggler-background);
+            background-color: var(--slider-background);
             transition: all ease-in-out 0.5s;
         }
 
@@ -229,6 +248,8 @@ html[data-theme='violet']{
             opacity: 0;
             cursor: pointer;
         }
+
+        // Calc screen styling
 
         &-screen {
             width: 100%;
@@ -246,15 +267,17 @@ html[data-theme='violet']{
             color: var(--screen-text);
         }
 
+        // Calculation history styling
+
         &-screen__history {
-            min-height: 1rem;
+            height: 1rem;
             font-size: 0.6rem;
             font-weight: 100;
             font-family: Spartan-Bold;
-            color: var(--screen-text);
+            color: var(--history-text);
         }
 
-        // Keypad styling
+        // Calc keypad styling
 
         &-keypad {
             width: 100%;
@@ -285,50 +308,58 @@ html[data-theme='violet']{
                 }
         }
 
+        // Buttons with normal font size
+
         &-keypad-button--padding-primary {
             padding: 1rem 0rem 0.6rem 0rem;
         }
+
+        // Buttons with normal font size
 
         &-keypad-button--padding-secondary {
             padding: 0.7rem 0rem 0.6rem 0rem;
         }
 
+        // Buttons with normal font size
+
         &-keypad-button--normal-font {
             font-size: 1.7rem;           
         }
+
+        // Buttons with smaller font size
 
         &-keypad-button--small-font {
             font-size: 1rem;
         }    
 
-        // Keypad buttons with primary color and shadow   
+        // Keypad buttons with primary color, background and shadow   
 
         &-keypad-button--primary-color {
-                color: var(--primary-text);
-                background-color: var(--primary-key-background);
-                -webkit-box-shadow:0px 4px 0px 0px var(--primary-key-shadow);
-                -moz-box-shadow: 0px 4px 0px 0px var(--primary-key-shadow);
-                box-shadow: 0px 4px 0px 0px var(--primary-key-shadow);
+                color: var(--primary-button-text);
+                background-color: var(--primary-button-background);
+                -webkit-box-shadow:0px 4px 0px 0px var(--primary-button-shadow);
+                -moz-box-shadow: 0px 4px 0px 0px var(--primary-button-shadow);
+                box-shadow: 0px 4px 0px 0px var(--primary-button-shadow);
         }
 
-        // Keypad buttons with secondary color and shadow
+        // Keypad buttons with secondary color, background and shadow
 
         &-keypad-button--secondary-color {
-                color: var(--secondary-text);
-                background-color: var(--secondary-key-background);
-                -webkit-box-shadow:0px 4px 0px 0px var(--secondary-key-shadow);
-                -moz-box-shadow: 0px 4px 0px 0px var(--secondary-key-shadow);
-                box-shadow: 0px 4px 0px 0px var(--secondary-key-shadow);
+                color: var(--secondary-button-text);
+                background-color: var(--secondary-button-background);
+                -webkit-box-shadow:0px 4px 0px 0px var(--secondary-button-shadow);
+                -moz-box-shadow: 0px 4px 0px 0px var(--secondary-button-shadow);
+                box-shadow: 0px 4px 0px 0px var(--secondary-button-shadow);
         }
 
-        // Keypad buttons with tertiary color and shadow
+        // Keypad buttons with tertiary color, background and shadow
 
         &-keypad-button--tertiary-color {
-                color: var(--tertiary-text);
-                background-color: var(--tertiary-key-background);
-                -webkit-box-shadow:0px 4px 0px 0px var(--tertiary-key-shadow);
-                -moz-box-shadow: 0px 4px 0px 0px var(--tertiary-key-shadow);
-                box-shadow: 0px 4px 0px 0px var(--tertiary-key-shadow);
+                color: var(--tertiary-button-text);
+                background-color: var(--tertiary-button-background);
+                -webkit-box-shadow:0px 4px 0px 0px var(--tertiary-button-shadow);
+                -moz-box-shadow: 0px 4px 0px 0px var(--tertiary-button-shadow);
+                box-shadow: 0px 4px 0px 0px var(--tertiary-button-shadow);
         }
 
         // Keypad buttons that span 2 columns
@@ -343,12 +374,12 @@ html[data-theme='violet']{
     &-footer {
         width: 100%;
         padding: 1rem 15%;
-        background-color: var(--screen-background);
+        background-color: var(--footer-background);
 
         // Footer text styling
 
         &__text {
-            color: var(--screen-text);
+            color: var(--footer-text);
             font-size: 0.75rem;
             font-family: Spartan-Bold;
             letter-spacing: 0.05rem;
@@ -359,7 +390,7 @@ html[data-theme='violet']{
         // General footer link styling
 
         &__link {
-            color: var(--secondary-key-background);
+            color: var(--footer-link-text);
             font-size: 0.75rem;
             font-family: Spartan-Bold;
             letter-spacing: 0.05rem;
