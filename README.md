@@ -53,7 +53,8 @@ Users should be able to:
 
 I learned a lot about RegExp and TypeScript. 
 
-A great example would be this function that returns a formatted string.
+A great example would be this function that checks the passed string and returns a modified version of it with
+, as thousand separator and . as a decimal separator.
 
 ```ts
 function formatString(value) {
@@ -70,8 +71,7 @@ I'd definitely plan to get better at writing JavaScript and TypeScript code.
 - [RegExp - MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) - Great sourse for learning about RegExp.
 - [RegExp - W3Schools](https://www.w3schools.com/jsref/jsref_obj_regexp.asp) - Another great sourse for learning about RegExp.
 - [Thousands Digit Separators](https://regexr.com/) - great tool for writing and testing the regular expression
-- [Thousands Digit Separators](https://thewebdev.info/2021/02/12/how-to-format-a-number-with-commas-as-thousands-digit-separators-in-javascript/)
-- [Stackoverflow](https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript) - This post on StackOverflow helped me understand and implement the number formatting with javascript
+- [Stackoverflow](https://stackoverflow.com/questions/2901102/how-to-print-a-number-with-commas-as-thousands-separators-in-javascript) - This post on StackOverflow helped me understand and implement the number formatting with JavaScript
 - [Custom Theme Toggler](https://www.youtube.com/watch?v=ZKXv_ZHQ654&list=LL&index=81) - This helped me with the toggler design. Gary is an amazing UX/UI Designer.
 I'd definitely recommend to anyone to check his channel.
 - [TypeScript Crash Course](https://www.youtube.com/watch?v=rAy_3SIqT-E&t=2202s) - In this video Brad explains the basics

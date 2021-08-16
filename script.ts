@@ -205,10 +205,13 @@ function changeTheme(event: any) {
 // A function that actually sets the theme
 
 function setTheme() {
+    let radioBtn: any
     if (localStorage.theme == undefined || localStorage.theme == null) {
         localStorage.theme = 'blue';
     }
     document.documentElement.setAttribute('data-theme', `${localStorage.theme}`);
+    radioBtn = document.getElementById(`${localStorage.theme}`)
+    radioBtn.checked = true;
     applyTransition();
     moveSlider(localStorage.theme)
 }
@@ -219,10 +222,10 @@ function moveSlider(currentTheme: any) {
     let slider: any
     slider = document.querySelector(".calc-top__slider");
     if (currentTheme === 'gray') {
-        slider.style.transform = "translateX(" + 1.5 + "rem)";
+        slider.style.transform = "translateX(" + 1.45 + "rem)";
     }
     if (currentTheme === 'violet') {
-        slider.style.transform = "translateX(" + 3 + "rem)";
+        slider.style.transform = "translateX(" + 2.9 + "rem)";
     }
     if (currentTheme === 'blue') {
         slider.style.transform = "translateX(" + 0 + "rem)";

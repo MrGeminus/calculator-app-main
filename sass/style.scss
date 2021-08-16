@@ -103,7 +103,7 @@ html[data-theme='violet']{
 }
 
 /*-----------------------------------------------------
-	Media
+	Media query
 -----------------------------------------------------*/
 
 @mixin breakpoint($value) {
@@ -167,6 +167,8 @@ html[data-theme='violet']{
         height: 39.8rem;
         margin: auto;
 
+        // If the screen width is 24rem or above apply the following styling
+
         @include breakpoint(medium) {
             max-width: 30rem;
         }
@@ -178,7 +180,9 @@ html[data-theme='violet']{
             align-items: center;    
         }
 
-        &-top__brand {
+        // Logo section on the top of calc app
+
+        &-top__logo {
             color: var(--brand-text);
             font-size: 1.95rem;
             font-family: Spartan-Bold;
@@ -206,11 +210,15 @@ html[data-theme='violet']{
             flex-direction: column;
         }
 
+        // Container that contains theme numerations
+
         &-top__theme-numeration {
             padding: 0.25rem 0;
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
         }
+
+        // The styling of numbers above the selectable theme
 
         &-top__theme-number {
             color: var(--theme-selector-text);
@@ -219,6 +227,8 @@ html[data-theme='violet']{
             font-family: Spartan-Bold;
             text-align: center;
         }
+
+        // Slider track styling
 
         &-top__slider-track {
             width: 4.5rem;
@@ -231,6 +241,8 @@ html[data-theme='violet']{
             background-color: var(--slider-track-background);
         }
 
+        // Rounded slider styling
+
         &-top__slider {
             width: 1rem;
             height: 1rem;
@@ -239,8 +251,10 @@ html[data-theme='violet']{
             left: 0.3rem;
             border-radius: 100%;
             background-color: var(--slider-background);
-            transition: all ease-in-out 0.5s;
+            transition: all ease-in-out 0.3s;
         }
+
+        // The selectable theme
 
         &-top__theme {
             width: 1.4rem;
@@ -260,6 +274,8 @@ html[data-theme='violet']{
             background-color: var(--screen-background);
         }  
 
+        // Currently displayed value
+
         &-screen__current-value {
             font-size: 2rem;
             font-weight: 100;
@@ -267,7 +283,7 @@ html[data-theme='violet']{
             color: var(--screen-text);
         }
 
-        // Calculation history styling
+        // Calculation history
 
         &-screen__history {
             height: 1rem;
@@ -416,6 +432,6 @@ html.theme-transition,
 html.theme-transition *,
 html.theme-transition *:before,
 html.theme-transition *:after {
-    transition: all 1000ms !important;
+    transition: all 0.3s !important;
     transition-delay: 0 !important;
 }
