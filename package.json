@@ -1,0 +1,56 @@
+{
+  "name": "calculator-app",
+  "version": "1.0.0",
+  "author": {
+    "name": "MrGeminus",
+    "email": "contact@mrgeminus.com",
+    "url": "http://mrgeminus.com/"
+  },
+  "description": "This is a solution to the calculator app challenge on Frontend Mentor.",
+  "keywords": [
+    "HTML5",
+    "Accessibility",
+    "BEM",
+    "Mobile-first",
+    "SCSS",
+    "TypeScript",
+    "Parcel",
+    "Jest",
+    "Front-End",
+    "Frontend Mentor"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrGeminus/calculator-app-main.git"
+  },
+  "homepage": "https://github.com/MrGeminus/calculator-app-main#readme",
+  "bugs": {
+    "url": "https://github.com/MrGeminus/calculator-app-main/issues",
+    "email": "support@mrgeminus.com"
+  },
+  "source": "public/index.html",
+  "scripts": {
+    "dev": "parcel",
+    "build": "parcel build",
+    "test": "jest",
+    "check": "tsc --noEmit",
+    "start": "npm run dev && npm test && npm check"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.4.0",
+    "jest": "^27.5.1",
+    "parcel": "^2.4.0",
+    "typescript": "^4.6.3"
+  },
+  "license": "MIT",
+  "funding": [
+    {
+      "type": "Buy Me A Coffee",
+      "url": "https://www.buymeacoffee.com/mrgeminus"
+    },
+    {
+      "type": "patreon",
+      "url": "https://www.patreon.com/my-account"
+    }
+  ]
+}

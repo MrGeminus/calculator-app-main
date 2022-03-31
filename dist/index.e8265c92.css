@@ -1,0 +1,330 @@
+@font-face {
+  font-family: Spartan;
+  src: url("Spartan-Bold.c63abf67.ttf");
+}
+
+html[data-theme="blue"] {
+  --main-background: #3a4764;
+  --slider-background: #d03f2f;
+  --slider-track-background: #232c43;
+  --keypad-background: #232c43;
+  --screen-background: #182034;
+  --primary-button-background: #eae3dc;
+  --secondary-button-background: #637097;
+  --tertiary-button-background: #d03f2f;
+  --footer-background: #232c43;
+  --primary-button-shadow: #b4a597;
+  --secondary-button-shadow: #404e72;
+  --tertiary-button-shadow: #93261a;
+  --brand-text: #fff;
+  --screen-text: #fff;
+  --history-text: #fff;
+  --theme-selector-text: #fff;
+  --primary-button-text: #444b5a;
+  --secondary-button-text: #fff;
+  --tertiary-button-text: #fff;
+  --footer-text: #fff;
+  --footer-link-text: #637097;
+}
+
+html[data-theme="gray"] {
+  --main-background: #e6e6e6;
+  --slider-background: #ca5502;
+  --slider-track-background: #d1cccc;
+  --keypad-background: #d1cccc;
+  --screen-background: #ededed;
+  --primary-button-background: #e5e4e1;
+  --secondary-button-background: #377f86;
+  --tertiary-button-background: #ca5502;
+  --footer-background: #d1cccc;
+  --primary-button-shadow: #a69d91;
+  --secondary-button-shadow: #1b5f65;
+  --tertiary-button-shadow: #893901;
+  --brand-text: #35352c;
+  --screen-text: #35352c;
+  --history-text: #35352c;
+  --theme-selector-text: #35352c;
+  --primary-button-text: #35352c;
+  --secondary-button-text: #fff;
+  --tertiary-button-text: #fff;
+  --footer-text: #35352c;
+  --footer-link-text: #377f86;
+}
+
+html[data-theme="violet"] {
+  --main-background: #160628;
+  --slider-background: #00e0d1;
+  --slider-track-background: #1d0934;
+  --keypad-background: #1d0934;
+  --screen-background: #1d0934;
+  --primary-button-background: #341c4f;
+  --secondary-button-background: #58077d;
+  --tertiary-button-background: #00e0d1;
+  --footer-background: #1d0934;
+  --primary-button-shadow: #871c9c;
+  --secondary-button-shadow: #bc15f4;
+  --tertiary-button-shadow: #6cf9f2;
+  --brand-text: #ffe53d;
+  --screen-text: #ffe53d;
+  --history-text: #ffe53d;
+  --theme-selector-text: #ffe53d;
+  --primary-button-text: #ffe53d;
+  --secondary-button-text: #fff;
+  --tertiary-button-text: #1b2427;
+  --footer-text: #ffe53d;
+  --footer-link-text: #58077d;
+}
+
+*, :after, :before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Spartan, sans-serif;
+  font-weight: 700;
+}
+
+.screen-readers-only {
+  width: 1px;
+  height: 1px;
+  clip: rect(0, 0, 0, 0);
+  border: none;
+  margin: -1px;
+  padding: 0;
+  position: absolute;
+  overflow: hidden;
+}
+
+.page {
+  width: 100vw;
+  min-height: 100vh;
+  flex-direction: column;
+  display: flex;
+}
+
+.page__main {
+  width: 100%;
+  background-color: var(--main-background);
+  flex-grow: 1;
+  padding: 1.5rem;
+  display: flex;
+}
+
+.page .calc {
+  width: 100%;
+  height: 39.8rem;
+  margin: auto;
+}
+
+@media (min-width: 24rem) {
+  .page .calc {
+    max-width: 30rem;
+  }
+}
+
+.page .calc__header {
+  align-items: center;
+  display: flex;
+}
+
+.page .calc-top__logo {
+  color: var(--brand-text);
+  font-family: Spartan-Bold;
+  font-size: 1.95rem;
+  text-decoration: none;
+}
+
+.page .calc-top__theme-selector-wrapper {
+  margin-left: auto;
+  display: flex;
+}
+
+.page .calc-top__theme-label {
+  color: var(--theme-selector-text);
+  letter-spacing: .1rem;
+  margin-top: auto;
+  margin-right: 1.3rem;
+  padding-bottom: .2rem;
+  font-family: Spartan-Bold;
+  font-size: .75rem;
+  font-weight: 100;
+}
+
+.page .calc-top__theme-selector {
+  flex-direction: column;
+  display: flex;
+}
+
+.page .calc-top__theme-numeration {
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: .25rem 0;
+  display: grid;
+}
+
+.page .calc-top__theme-number {
+  color: var(--theme-selector-text);
+  text-align: center;
+  font-family: Spartan-Bold;
+  font-size: .7rem;
+  font-weight: 100;
+}
+
+.page .calc-top__slider-track {
+  width: 4.5rem;
+  height: 1.6rem;
+  background-color: var(--slider-track-background);
+  border-radius: .9rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: .1rem;
+  display: grid;
+  position: relative;
+}
+
+.page .calc-top__slider {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--slider-background);
+  border-radius: 100%;
+  transition: all .3s ease-in-out;
+  position: absolute;
+  top: .3rem;
+  left: .3rem;
+}
+
+.page .calc-top__theme {
+  width: 1.4rem;
+  height: 1.4rem;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.page .calc__display {
+  width: 100%;
+  text-align: right;
+  background-color: var(--screen-background);
+  border-radius: .7rem;
+  margin-top: 2rem;
+  padding: 1.6rem 1.6rem .6rem;
+}
+
+.page .calc__current-value {
+  color: var(--screen-text);
+  font-family: Spartan-Bold;
+  font-size: 2rem;
+  font-weight: 100;
+}
+
+.page .calc__previous-values {
+  height: 1rem;
+  color: var(--history-text);
+  font-family: Spartan-Bold;
+  font-size: .6rem;
+  font-weight: 100;
+}
+
+.page .calc__keypad {
+  width: 100%;
+  grid-gap: .85rem;
+  background-color: var(--keypad-background);
+  border-radius: .7rem;
+  grid-template-rows: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  display: grid;
+}
+
+.page .calc__keypad-button {
+  text-align: center;
+  border: none;
+  border-radius: .3rem;
+  margin-bottom: .3rem;
+  font-family: Spartan-Bold;
+  font-weight: 100;
+  transition: all .3s ease-in-out;
+}
+
+.page .calc__keypad-button:hover {
+  box-shadow: none;
+  transform: translateY(4px);
+}
+
+.page .calc__keypad-button--padding-primary {
+  padding: 1rem 0 .6rem;
+}
+
+.page .calc__keypad-button--padding-secondary {
+  padding: .7rem 0 .6rem;
+}
+
+.page .calc__keypad-button--text-normal {
+  font-size: 1.7rem;
+}
+
+.page .calc__keypad-button--text-small {
+  font-size: 1rem;
+}
+
+.page .calc__keypad-button--primary {
+  color: var(--primary-button-text);
+  background-color: var(--primary-button-background);
+  -webkit-box-shadow: 0px 4px 0px 0px var(--primary-button-shadow);
+  -moz-box-shadow: 0px 4px 0px 0px var(--primary-button-shadow);
+  box-shadow: 0px 4px 0px 0px var(--primary-button-shadow);
+}
+
+.page .calc__keypad-button--secondary {
+  color: var(--secondary-button-text);
+  background-color: var(--secondary-button-background);
+  -webkit-box-shadow: 0px 4px 0px 0px var(--secondary-button-shadow);
+  -moz-box-shadow: 0px 4px 0px 0px var(--secondary-button-shadow);
+  box-shadow: 0px 4px 0px 0px var(--secondary-button-shadow);
+}
+
+.page .calc__keypad-button--tertiary {
+  color: var(--tertiary-button-text);
+  background-color: var(--tertiary-button-background);
+  -webkit-box-shadow: 0px 4px 0px 0px var(--tertiary-button-shadow);
+  -moz-box-shadow: 0px 4px 0px 0px var(--tertiary-button-shadow);
+  box-shadow: 0px 4px 0px 0px var(--tertiary-button-shadow);
+}
+
+.page .calc__keypad-button--large {
+  grid-column: span 2;
+}
+
+.page__footer {
+  width: 100%;
+  background-color: var(--footer-background);
+  padding: 1rem 15%;
+}
+
+.page__footer-text {
+  color: var(--footer-text);
+  letter-spacing: .05rem;
+  text-align: center;
+  font-family: Spartan-Bold;
+  font-size: .75rem;
+  line-height: 1.3rem;
+}
+
+.page__footer-link {
+  color: var(--footer-link-text);
+  letter-spacing: .05rem;
+  font-family: Spartan-Bold;
+  font-size: .75rem;
+}
+
+.page__footer-link--underline {
+  text-decoration: none;
+}
+
+.page__footer-link--underline:hover {
+  text-decoration: underline;
+}
+
+html.theme-transition, html.theme-transition *, html.theme-transition :before, html.theme-transition :after {
+  transition: all .3s !important;
+  transition-delay: 0 !important;
+}
+
+/*# sourceMappingURL=index.e8265c92.css.map */
